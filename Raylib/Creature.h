@@ -19,12 +19,11 @@ public:
 	Creature(Vector2 const & p_pos)
 	{
 		m_pos = p_pos;
-		elapsedAnimTime = 0.f;
 	}
 	// member functions
 	void Update(Vector2 p_targPos)
 	{
-
+		m_pos = Vector2Subtract(m_pos, Vector2Normalize(Vector2Subtract(m_pos,p_targPos)));
 	}
 	void UpdateAnimation()
 	{
@@ -82,7 +81,7 @@ public:
 	// member variables
 	Vector2 m_pos;
 	float animTime = 1.f;
-	float elapsedAnimTime;
+	float elapsedAnimTime = 0.f;
 	bool rising = true;
 	int currentFrame = 2;
 	int frameAmount = 3;

@@ -27,6 +27,9 @@
     <ClInclude Include="MyHelperLib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RayMath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
