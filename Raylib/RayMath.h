@@ -144,6 +144,9 @@ typedef struct float16 { float v[16]; } float16;
 
 #include <math.h>       // Required for: sinf(), cosf(), tan(), fabs()
 
+// USER ADDED
+namespace RayMath{
+
 //----------------------------------------------------------------------------------
 // Module Functions Definition - Utils math
 //----------------------------------------------------------------------------------
@@ -1380,6 +1383,13 @@ RMDEF Quaternion QuaternionTransform(Quaternion q, Matrix mat)
 	result.w = mat.m3*q.x + mat.m7*q.y + mat.m11*q.z + mat.m15*q.w;
 
 	return result;
+}
+
+
+// MY CONST EXPRESSIONS
+float constexpr sin_45 = 0.70710678;
+
+// END USER ADDED NAMESPACE
 }
 
 #endif  // RAYMATH_H

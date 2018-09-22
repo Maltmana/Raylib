@@ -12,6 +12,14 @@ enum class CreatureGraphicsTypes
 	Priest
 };
 
+enum class FacingDirections
+{
+	North,
+	East,
+	South,
+	West
+};
+
 class Creature
 {
 public:
@@ -23,29 +31,41 @@ public:
 	// member functions
 	void Update(Vector2 p_targPos)
 	{
-		Vector2 subtractedVector = Vector2Subtract(p_targPos, m_pos);
-		printf("%f\n", subtractedVector.y);
-		m_pos = Vector2Add(m_pos, Vector2Normalize(subtractedVector));
-		if (subtractedVector.y < 0 && (subtractedVector.x < 100 && subtractedVector.x > -100))
-		{
-			m_facing = 0;
-			return;
-		}
-		if (subtractedVector.y >= 0 && (subtractedVector.x < 100 && subtractedVector.x > -100))
-		{
-			m_facing = 2;
-			return;
-		}
-		if (subtractedVector.x < 0)
-		{
-			m_facing = 3;
-		}
-		if (subtractedVector.x >= 0)
-		{
-			m_facing = 1;
-		}
+		Vector2 subtractedVector = RayMath::Vector2Subtract(p_targPos, m_pos);
+		Vector2 normalizedVector = RayMath::Vector2Normalize(subtractedVector);
+		printf("%f\n", normalizedVector.y);
+		m_pos = RayMath::Vector2Add(m_pos, normalizedVector);
 
 
+
+		change_facing(normalizedVector);
+
+
+	}
+	void change_facing(Vector2 const & p_normalizedVector)
+	{
+		// x,y normalised = destiantion minus position.  if x is positive and abs y is less than square root of 2 then face right. if the same but x neg face left. otherwise if y is greater than 
+		// square of 2 and positive, face north, else face south. 
+		if (p_normalizedVector.x > 0 && std::abs(p_normalizedVector.y) < RayMath::sin_45)
+		{
+			m_facing = (int)FacingDirections::East;
+			return;
+		}
+		if (p_normalizedVector.x < 0 && std::abs(p_normalizedVector.y) < RayMath::sin_45)
+		{
+			m_facing = (int)FacingDirections::West;
+			return;
+		}
+		else if (p_normalizedVector.y < 0)
+		{
+			m_facing = (int)FacingDirections::North;
+			return;
+		}
+		else if (p_normalizedVector.y > 0)
+		{
+			m_facing = (int)FacingDirections::South;
+			return;
+		}
 	}
 	void UpdateAnimation()
 	{
@@ -87,28 +107,7 @@ public:
 			elapsedAnimTime = 0.f;
 		}
 	}
-	/*
-	void UpdateAnimation()
 
-		local frameAmount = 3
-		if (elapsedTime >= 0.3) then
-			if (rising) then
-				currentFrame = currentFrame + 1
-				if (currentFrame == frameAmount) then
-					rising = false
-					print("rising false")
-					end
-				else
-					currentFrame = currentFrame - 1;
-	if (currentFrame == 1) then
-		rising = true
-		print("rising true")
-		end
-		end
-		activeFrame = frames[currentFrame]
-		elapsedTime = 0
-		end
-		end*/
 	void UpdateDraw()
 	{
 
@@ -117,7 +116,7 @@ public:
 	// member variables
 	Vector2 m_pos;
 	Vector2 m_targPos;
-	int m_facing = 0;
+	int m_facing = (int)FacingDirections::South;
 	float animTime = 1.f;
 	float elapsedAnimTime = 0.f;
 	bool rising = true;

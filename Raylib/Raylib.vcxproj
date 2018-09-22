@@ -164,6 +164,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Creature.h" />
+    <ClInclude Include="Graphic.h" />
     <ClInclude Include="MyHelperLib.h" />
     <ClInclude Include="RayMath.h" />
     <ClInclude Include="stdafx.h" />
