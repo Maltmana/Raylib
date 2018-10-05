@@ -25,8 +25,10 @@ class Creature
 public:
 	// class functions
 	Creature(Vector2 const & p_pos)
+		:
+		m_pos{p_pos},
+		m_targPos{ p_pos.x +1, p_pos.y +1 }
 	{
-		m_pos = p_pos;
 		puts("creature created");
 	}
 	// member functions
@@ -69,7 +71,7 @@ public:
 	}
 	void change_targ(Vector2 p_targPos)
 	{
-		m_targPos = p_targPos;
+		m_targPos = p_targPos; // TODO this throws read access violation.
 	}
 	void UpdateAnimation()
 	{
