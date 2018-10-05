@@ -27,16 +27,16 @@ public:
 	Creature(Vector2 const & p_pos)
 	{
 		m_pos = p_pos;
+		puts("creature created");
 	}
 	// member functions
-	void Update(Vector2 p_targPos)
+	void Update()
 	{
-		Vector2 subtractedVector = RayMath::Vector2Subtract(p_targPos, m_pos);
+		Vector2 subtractedVector = RayMath::Vector2Subtract(m_targPos, m_pos);
 		Vector2 normalizedVector = RayMath::Vector2Normalize(subtractedVector);
-		printf("%f\n", normalizedVector.y);
 		m_pos = RayMath::Vector2Add(m_pos, normalizedVector);
 
-
+		m_collision = { m_pos.x, m_pos.y, 16, 18 },
 
 		change_facing(normalizedVector);
 
@@ -66,6 +66,10 @@ public:
 			m_facing = (int)FacingDirections::South;
 			return;
 		}
+	}
+	void change_targ(Vector2 p_targPos)
+	{
+		m_targPos = p_targPos;
 	}
 	void UpdateAnimation()
 	{
@@ -115,6 +119,7 @@ public:
 
 	// member variables
 	Vector2 m_pos;
+	Rectangle m_collision = { 0,0,0,0};
 	Vector2 m_targPos;
 	int m_facing = (int)FacingDirections::South;
 	float animTime = 1.f;
