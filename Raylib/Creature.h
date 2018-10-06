@@ -120,6 +120,7 @@ public:
 	}
 
 	// member variables
+
 	Vector2 m_pos;
 	Rectangle m_collision = { 0,0,0,0};
 	Vector2 m_targPos;
@@ -131,3 +132,4 @@ public:
 	int currentFrameRow = 0;
 	int frameAmount = 3;
 };
+
