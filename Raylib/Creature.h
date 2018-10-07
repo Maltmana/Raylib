@@ -131,5 +131,6 @@ public:
 	int currentFrame = 2;
 	int currentFrameRow = 0;
 	int frameAmount = 3;
+	std::string creatureName = "dude";
 };
 
