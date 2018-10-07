@@ -27,5 +27,5 @@ public:
 	// NOTE: Destination rectangle (screen rectangle where drawing part of texture)
 	Rectangle destRec = { 0,0, (float)m_frameWidth * 2, (float)m_frameHeight * 2 };
 	// NOTE: Origin of the texture (rotation/scale point), it's relative to destination rectangle size
-	Vector2 origin = { (float)m_frameWidth, (float)m_frameHeight };
+	Vector2 origin = { 0,0 };
 };
