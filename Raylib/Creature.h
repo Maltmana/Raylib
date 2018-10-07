@@ -32,11 +32,16 @@ public:
 		puts("creature created");
 	}
 	// member functions
-	void Update()
+	void Update(std::vector<Creature> const & p_creatures)
 	{
 		Vector2 subtractedVector = RayMath::Vector2Subtract(m_targPos, m_pos);
 		Vector2 normalizedVector = RayMath::Vector2Normalize(subtractedVector);
-		m_pos = RayMath::Vector2Add(m_pos, normalizedVector);
+		if (!(m_pos.x < m_targPos.x + 1 && m_pos.x > m_targPos.x - 1) && !(m_pos.y < m_targPos.y + 1 && m_pos.y > m_targPos.y - 1))
+		{
+
+			m_pos = RayMath::Vector2Add(m_pos, normalizedVector);
+		}
+
 
 		m_collision = { m_pos.x, m_pos.y, 16, 18 },
 
@@ -44,7 +49,26 @@ public:
 
 		run_waypoints();
 
+		collideSolidly(p_creatures);
 
+	}
+
+	void collideSolidly(std::vector<Creature> const & p_creatures)
+	{
+		for (auto & creature : p_creatures)
+		{
+			if (m_pos.x != creature.m_pos.x && m_pos.y != creature.m_pos.y)
+			{
+				if (m_collision.y <= creature.m_collision.y + creature.m_collision.height &&
+					creature.m_collision.y <= m_collision.y + m_collision.height &&
+					m_collision.x <= creature.m_collision.x + creature.m_collision.width &&
+					creature.m_collision.x <= m_collision.x + m_collision.width)
+				{
+					m_targPos.x = m_pos.x;
+					m_targPos.y = m_pos.y;
+				}
+			}
+		}
 	}
 
 	void run_waypoints()
