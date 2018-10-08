@@ -11,3 +11,16 @@ void MyHelperLib::floatToString(char * p_buffer, float p_float)
 		// Result was truncated - resize the buffer and retry.
 	}
 }
+
+bool MyHelperLib::approx(float a, float b, float ish)
+{
+
+	if (a <= b + ish && a >= b - ish)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}

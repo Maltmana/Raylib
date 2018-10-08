@@ -39,7 +39,23 @@ public:
 		if (!(m_pos.x < m_targPos.x + 1 && m_pos.x > m_targPos.x - 1) && !(m_pos.y < m_targPos.y + 1 && m_pos.y > m_targPos.y - 1))
 		{
 
-			m_pos = RayMath::Vector2Add(m_pos, normalizedVector);
+			Vector2 newPos = RayMath::Vector2Add(m_pos, normalizedVector);
+			if (m_collidingBottom && normalizedVector.y >= 0 || m_collidingTop && normalizedVector.y <= 0)
+			{
+			}
+			else
+			{
+				m_pos.y = newPos.y;
+			}
+			if (m_collidingRight && normalizedVector.x >= 0 || m_collidingLeft && normalizedVector.x <= 0)
+			{
+			}
+			else
+			{
+				m_pos.x = newPos.x;
+			}
+
+
 		}
 
 
@@ -64,8 +80,48 @@ public:
 					m_collision.x <= creature.m_collision.x + creature.m_collision.width &&
 					creature.m_collision.x <= m_collision.x + m_collision.width)
 				{
-					m_targPos.x = m_pos.x;
-					m_targPos.y = m_pos.y;
+					if (MyHelperLib::approx(m_collision.y, creature.m_collision.y + creature.m_collision.height, 1))
+					{
+						m_collidingTop = true;
+					}
+					else
+					{
+						m_collidingTop = false;
+					}
+
+					if (MyHelperLib::approx(m_collision.y + m_collision.height, creature.m_collision.y, 1))
+					{
+						m_collidingBottom = true;
+					}
+					else
+					{
+						m_collidingBottom = false;
+					}
+
+					if (MyHelperLib::approx(m_collision.x, creature.m_collision.x + creature.m_collision.width, 1))
+					{
+						m_collidingLeft = true;
+					}
+					else
+					{
+						m_collidingLeft = false;
+					}
+
+					if (MyHelperLib::approx(m_collision.x + m_collision.width, creature.m_collision.x, 1))
+					{
+						m_collidingRight = true;
+					}
+					else
+					{
+						m_collidingRight = false;
+					}
+				}
+				else
+				{
+					m_collidingTop = false;
+					m_collidingBottom = false;
+					m_collidingLeft = false;
+					m_collidingRight = false;
 				}
 			}
 		}
@@ -173,5 +229,11 @@ public:
 	int currentFrameRow = 0;
 	int frameAmount = 3;
 	std::string creatureName = "dude";
+
+	bool m_collidingLeft = false;
+	bool m_collidingRight = false;
+	bool m_collidingTop = false;
+	bool m_collidingBottom = false;
+
 };
 
