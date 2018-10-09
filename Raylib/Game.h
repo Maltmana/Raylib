@@ -38,8 +38,8 @@ private:
 
 
 	// Variables
-	int characterSpritesCol = 18;
-	int characterSpritesRow = 8;
+	int characterSpritesCol = 18; // MOVE TO FILE
+	int characterSpritesRow = 8; // MOVE TO FILE
 	Graphic characterSprites;
 	Graphic grassTile;
 
