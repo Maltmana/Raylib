@@ -3,7 +3,7 @@
 #include "Creature.h"
 #include "CreatureVisualizer.h"
 #include "Graphic.h"
-
+#include "Controller.h"
 /* Accepts input. Simulates creatures. Presents graphics. */
 class Game
 {
@@ -20,6 +20,8 @@ public:
 	void load_textures();
 private:
 
+	// controller
+	Controller controller;
 
 	// creature container
 	std::vector<Creature> creatures;
@@ -30,9 +32,7 @@ private:
 	//visualizer
 	CreatureVisualizer cv;
 
-	Vector2 mouseDownPosition = { 0,0 };
 
-	Rectangle selectionRect = { 0,0,0,0 };
 
 
 
