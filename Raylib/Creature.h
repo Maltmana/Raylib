@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+#include "Animation.h"
 
 
 enum class CreatureGraphicsTypes
@@ -34,13 +35,13 @@ public:
 	// member functions
 	void Update(std::vector<Creature> const & p_creatures);
 
-	void collideSolidly(std::vector<Creature> const & p_creatures);
+	void collideSolidly(std::vector<Creature> const & p_creatures); // COLLISION LIB
 
 	void run_waypoints();
 
 	void change_facing(Vector2 const & p_normalizedVector);
 	void change_targ(Vector2 p_targPos);
-	void UpdateAnimation();
+
 	// member variables
 	public:
 	Vector2 m_pos;
@@ -48,12 +49,9 @@ public:
 	Vector2 m_targPos;
 	std::deque<Vector2> m_wayPoints;
 	int m_facing = (int)FacingDirections::South;
-	float animTime = 1.f;
-	float elapsedAnimTime = 0.f;
-	bool rising = true;
-	int currentFrame = 2;
-	int currentFrameRow = 0;
-	int frameAmount = 3;
+
+	Animation m_animation;
+
 	std::string creatureName = "dude";
 
 	bool m_collidingLeft = false;

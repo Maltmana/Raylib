@@ -103,12 +103,11 @@ void Game::Update()
 	for (auto & creature : creatures)
 	{
 
-		creature.UpdateAnimation();
 		creature.Update(creatures);
 		int typeOffset = (characterSprites.m_frameWidth * 3 * (int)CreatureGraphicsTypes::Druid);
-		int frameOffset = ((creature.currentFrame - 1) * characterSprites.m_frameWidth);
+		int frameOffset = ((creature.m_animation.currentFrame - 1) * characterSprites.m_frameWidth);
 		characterSprites.m_sourceRec.x = typeOffset + frameOffset;
-		characterSprites.m_sourceRec.y = creature.currentFrameRow * 18;
+		characterSprites.m_sourceRec.y = creature.m_animation.currentFrameRow * 18;
 		characterSprites.destRec.x = creature.m_pos.x;
 		characterSprites.destRec.y = creature.m_pos.y;
 

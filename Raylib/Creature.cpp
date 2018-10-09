@@ -1,5 +1,6 @@
 #include "Creature.h"
 
+
 // class functions
 Creature::Creature(Vector2 const & p_pos)
 	:
@@ -36,8 +37,6 @@ void Creature::Update(std::vector<Creature> const & p_creatures)
 		{
 			m_pos.x = newPos.x;
 		}
-
-
 	}
 
 
@@ -48,6 +47,9 @@ void Creature::Update(std::vector<Creature> const & p_creatures)
 	run_waypoints();
 
 	collideSolidly(p_creatures);
+
+
+	m_animation.UpdateAnimation(m_facing);
 
 }
 
@@ -153,44 +155,5 @@ void Creature::change_targ(Vector2 p_targPos)
 	m_targPos = p_targPos; // TODO this throws read access violation.
 }
 
-void Creature::UpdateAnimation()
-{
-	// connecting the facing to the animation row here.
-	switch (m_facing)
-	{
-	case 0: currentFrameRow = 0;
-		break;
-	case 1: currentFrameRow = 1;
-		break;
-	case 2: currentFrameRow = 2;
-		break;
-	case 3: currentFrameRow = 3;
-		break;
-	default:
-		break;
-	}
 
-	// animation column.
-	elapsedAnimTime = elapsedAnimTime + GetFrameTime();
-	if (elapsedAnimTime >= animTime)
-	{
-		if (rising)
-		{
-			currentFrame += 1;
-			if (currentFrame == frameAmount)
-			{
-				rising = false;
-			}
-		}
-		else
-		{
-			currentFrame -= 1;
-			if (currentFrame == 1)
-			{
-				rising = true;
-			}
-		}
-		elapsedAnimTime = 0.f;
-	}
-}
 
