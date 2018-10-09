@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "Creature.h"
+#include "CreatureVisualizer.h"
 #include "Graphic.h"
 
 
@@ -15,6 +16,7 @@ public:
 	Game & operator=(Game&& other) noexcept = delete; // move assignment
 public:
 	void Update();
+	void Draw();
 	void load_textures();
 private:
 	// creature container

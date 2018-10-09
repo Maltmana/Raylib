@@ -10,15 +10,9 @@ Game::Game()
 	selectedCreatures.reserve(1000); // TODO THIS WILL BUG OUT IF GOES PAST RESERVE CAUSE Iterator invalidation rules
 }
 
-// TODO load params from file
-
 Game::~Game()
 {
 }
-
-
-
-
 
 void Game::Update()
 {
@@ -137,19 +131,13 @@ void Game::Update()
 	{
 		selectionRect = { 0,0,0,0 };
 	}
+}
 
-	// Draw
-	//----------------------------------------------------------------------------------
-
+void Game::Draw()
+{
 	BeginDrawing();
 
 	ClearBackground(RAYWHITE);
-
-	// NOTE: Using DrawTexturePro() we can easily rotate and scale the part of the texture we draw
-	// sourceRec defines the part of the texture we use for drawing
-	// destRec defines the rectangle where our texture part will fit (scaling it to fit)
-	// origin defines the point of the texture used as reference for rotation and scaling
-	// rotation defines the texture rotation (using origin as rotation point)
 
 	// draw selection rect
 	DrawRectangleLinesEx(selectionRect, 2, GREEN);
@@ -172,7 +160,6 @@ void Game::Update()
 
 
 	EndDrawing();
-
 }
 
 void Game::load_textures()

@@ -23,8 +23,14 @@ enum class FacingDirections
 class Creature
 {
 public:
-	// class functions
 	Creature(Vector2 const & p_pos);
+	~Creature();
+	// Creature(const Creature& other) = delete; // copy constructor // TODO xmemory error
+	// Creature(Creature&& other) = delete; // move constructor // TODO xmemory error
+	// Creature & operator=(const Creature & other) = delete; // copy assignment // TODO xmemory error
+	// Creature & operator=(Creature&& other) noexcept = delete; // move assignment // TODO xmemory error
+
+public:
 	// member functions
 	void Update(std::vector<Creature> const & p_creatures);
 
@@ -35,9 +41,6 @@ public:
 	void change_facing(Vector2 const & p_normalizedVector);
 	void change_targ(Vector2 p_targPos);
 	void UpdateAnimation();
-
-	void UpdateDraw();
-
 	// member variables
 	public:
 	Vector2 m_pos;

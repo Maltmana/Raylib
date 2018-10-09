@@ -9,6 +9,10 @@ Creature::Creature(Vector2 const & p_pos)
 	puts("creature created");
 }
 
+Creature::~Creature()
+{
+}
+
 
 void Creature::Update(std::vector<Creature> const & p_creatures)
 {
@@ -190,7 +194,3 @@ void Creature::UpdateAnimation()
 	}
 }
 
-void Creature::UpdateDraw()
-{
-
-}
