@@ -1,5 +1,7 @@
 #pragma once
 #include "stdafx.h"
+
+/* Holds loaded texture with data connected to that texture. */
 class Graphic
 {
 public:

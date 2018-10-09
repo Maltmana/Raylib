@@ -4,7 +4,7 @@
 class Creature;
 class Graphic;
 
-// This allows Creature to have no graphical information whatsoever
+/* Meant to help seperate visual functions out of Creature. */
 class CreatureVisualizer
 {
 public:

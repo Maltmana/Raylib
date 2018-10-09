@@ -4,7 +4,7 @@
 #include "CreatureVisualizer.h"
 #include "Graphic.h"
 
-
+/* Accepts input. Simulates creatures. Presents graphics. */
 class Game
 {
 public:

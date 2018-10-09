@@ -21,6 +21,7 @@ enum class FacingDirections
 	West
 };
 
+/* Creature interactions is the point of game. Mainly holds functions and data to carry out those interactions. Secondarily holds visual data that is connected to it. */
 class Creature
 {
 public:

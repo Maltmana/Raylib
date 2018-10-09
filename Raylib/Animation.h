@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 
+/* Holds persistent graphics data and functions for creatures. */
 class Animation
 {
 public:
