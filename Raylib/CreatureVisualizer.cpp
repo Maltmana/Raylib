@@ -29,7 +29,7 @@ void CreatureVisualizer::draw(Creature const & creature, Graphic const & graphic
 	// NOTE: Source rectangle (part of the texture to use for drawing)
 	Rectangle sourceRec = { 0, 0, (float)graphic.m_frameWidth, (float)graphic.m_frameHeight };
 	// NOTE: Destination rectangle (screen rectangle where drawing part of texture)
-	Rectangle destRec = { 0,0, (float)graphic.m_frameWidth * 2, (float)graphic.m_frameHeight * 2 };
+	Rectangle destRec = { 0,0, (float)graphic.m_frameWidth, (float)graphic.m_frameHeight};
 	// NOTE: Origin of the texture (rotation/scale point), it's relative to destination rectangle size
 	Vector2 origin = { 0,0 };
 
@@ -40,7 +40,6 @@ void CreatureVisualizer::draw(Creature const & creature, Graphic const & graphic
 	destRec.x = creature.m_pos.x;
 	destRec.y = creature.m_pos.y;
 
-	//destRec = { creature.m_pos.x, creature.m_pos.y,graphic.m_frameWidth, graphic.m_frameHeight };
 	DrawTexturePro(graphic.m_texture, sourceRec, destRec, origin, rotation, WHITE);
 
 	// draw collision box
