@@ -10,6 +10,8 @@ Game::Game()
 	selectedCreatures.reserve(1000); // TODO THIS WILL BUG OUT IF GOES PAST RESERVE CAUSE Iterator invalidation rules
 }
 
+// TODO load params from file
+
 Game::~Game()
 {
 	CloseWindow();
@@ -174,9 +176,7 @@ void Game::Update()
 
 }
 
-inline void Game::load_textures()
+void Game::load_textures()
 {
-
-
 
 }

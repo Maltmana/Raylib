@@ -9,20 +9,14 @@ class Game
 public:
 	Game();
 	~Game();
-
 	Game(const Game& other) = delete; // copy constructor
-
 	Game(Game&& other) = delete; // move constructor
-
 	Game & operator=(const Game & other) = delete; // copy assignment
-
 	Game & operator=(Game&& other) noexcept = delete; // move assignment
-
+public:
 	void Update();
-
-private:
 	void load_textures();
-
+private:
 	// creature container
 	std::vector<Creature> creatures;
 
@@ -48,4 +42,3 @@ private:
 
 };
 
-// TODO load params from file
