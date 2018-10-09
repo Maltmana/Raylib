@@ -143,18 +143,9 @@ void Game::Draw()
 	DrawRectangleLinesEx(selectionRect, 2, GREEN);
 
 	// draw creatures
-	int x = 0;
-	int rotation = 0;
 	for (auto const & creature : creatures)
 	{
-		Rectangle destRec = { creature.m_pos.x, creature.m_pos.y,characterSprites.m_frameWidth, characterSprites.m_frameHeight };
-		grassTile.destRec.x * x;
-		DrawTexturePro(characterSprites.m_texture, characterSprites.m_sourceRec, destRec, characterSprites.origin, (float)rotation, WHITE);
-		DrawTexturePro(grassTile.m_texture, grassTile.m_sourceRec, grassTile.destRec, grassTile.origin, (float)rotation, WHITE);
-		x++;
-
-		// draw collision box
-		DrawRectangleLinesEx(creature.m_collision, 1, RED);
+		cv.visualize(creature, characterSprites);
 	}
 
 

@@ -19,11 +19,16 @@ public:
 	void Draw();
 	void load_textures();
 private:
+
+
 	// creature container
 	std::vector<Creature> creatures;
 
 	// selection system
 	std::vector<std::reference_wrapper<Creature>> selectedCreatures;
+
+	//visualizer
+	CreatureVisualizer cv;
 
 	Vector2 mouseDownPosition = { 0,0 };
 
