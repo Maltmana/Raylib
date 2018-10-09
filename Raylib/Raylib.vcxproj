@@ -163,7 +163,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Clock.h" />
     <ClInclude Include="Creature.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Graphic.h" />

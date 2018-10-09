@@ -1,5 +1,6 @@
 #include "Game.h"
 
+
 Game::Game()
 	:
 	characterSprites("assets/charsprites.png", characterSpritesCol, characterSpritesRow),
@@ -97,11 +98,6 @@ void Game::Update()
 				selected.m_wayPoints.push_back(GetMousePosition());
 			}
 
-			if (clock.returnTrueEvery(1.f))
-			{
-				std::cout << &selected;
-				puts("");
-			}
 
 		}
 	}
@@ -175,5 +171,12 @@ void Game::Update()
 
 
 	EndDrawing();
+
+}
+
+inline void Game::load_textures()
+{
+
+
 
 }

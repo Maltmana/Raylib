@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Creature.h"
 #include "Graphic.h"
-#include "Clock.h"
+
 
 class Game
 {
@@ -10,15 +10,18 @@ public:
 	Game();
 	~Game();
 
+	Game(const Game& other) = delete; // copy constructor
+
+	Game(Game&& other) = delete; // move constructor
+
+	Game & operator=(const Game & other) = delete; // copy assignment
+
+	Game & operator=(Game&& other) noexcept = delete; // move assignment
+
 	void Update();
 
 private:
-	void load_textures()
-	{
-
-		
-		
-	}
+	void load_textures();
 
 	// creature container
 	std::vector<Creature> creatures;
@@ -41,9 +44,6 @@ private:
 
 	//flags
 	bool paused = false;
-
-	// clock
-	Clock clock;
 
 
 };
