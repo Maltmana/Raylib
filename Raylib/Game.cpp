@@ -19,13 +19,6 @@ void Game::Update()
 
 	controller.update(paused, creatures, selectedCreatures);
 
-	
-
-	
-
-
-
-
 	for (auto & creature : creatures)
 	{
 
