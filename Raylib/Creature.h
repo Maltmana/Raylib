@@ -50,6 +50,8 @@ public:
 	std::deque<Vector2> m_wayPoints;
 	int m_facing = (int)FacingDirections::South;
 
+	int type = (int)CreatureGraphicsTypes::Druid;
+
 	Animation m_animation;
 
 	std::string creatureName = "dude";

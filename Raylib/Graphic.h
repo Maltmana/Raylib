@@ -22,10 +22,5 @@ public:
 	int const m_nSpriteRow;
 	int const m_frameWidth = m_texture.width / m_nSpritesCol;
 	int const m_frameHeight = m_texture.height / m_nSpriteRow;
-	// NOTE: Source rectangle (part of the texture to use for drawing)
-	Rectangle m_sourceRec = { 0, 0, (float)m_frameWidth, (float)m_frameHeight };
-	// NOTE: Destination rectangle (screen rectangle where drawing part of texture)
-	Rectangle destRec = { 0,0, (float)m_frameWidth * 2, (float)m_frameHeight * 2 };
-	// NOTE: Origin of the texture (rotation/scale point), it's relative to destination rectangle size
-	Vector2 origin = { 0,0 };
+
 };
