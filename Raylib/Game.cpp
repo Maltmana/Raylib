@@ -14,7 +14,6 @@ Game::Game()
 
 Game::~Game()
 {
-	CloseWindow();
 }
 
 

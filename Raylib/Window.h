@@ -21,4 +21,5 @@ Window::Window()
 
 Window::~Window()
 {
+	CloseWindow();
 }

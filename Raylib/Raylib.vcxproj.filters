@@ -22,6 +22,9 @@
     <Filter Include="Header Files\Misc">
       <UniqueIdentifier>{d4e00b7f-f07b-4fe7-acc0-90f60d09c056}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\main">
+      <UniqueIdentifier>{cc4b65d8-5fea-4766-9a55-6f9631ef98a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -48,12 +51,12 @@
     <ClInclude Include="Window.h">
       <Filter>Header Files\Misc</Filter>
     </ClInclude>
+    <ClInclude Include="CreatureVisualizer.h">
+      <Filter>Header Files\GameVisual</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MyHelperLib.cpp">
@@ -64,6 +67,9 @@
     </ClCompile>
     <ClCompile Include="Creature.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files\main</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
