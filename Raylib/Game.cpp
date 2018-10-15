@@ -14,6 +14,15 @@ Game::~Game()
 {
 }
 
+void Game::loop()
+{
+	while (!WindowShouldClose())
+	{
+		Update();
+		Draw();
+	}
+}
+
 void Game::Update()
 {
 

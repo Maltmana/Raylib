@@ -1,10 +1,15 @@
 #pragma once
+// std
+// lib
+// non-system
 #include "stdafx.h"
+// system
 #include "Creature.h"
 #include "CreatureVisualizer.h"
 #include "Graphic.h"
 #include "Controller.h"
-/* Accepts input. Simulates creatures. Presents graphics. */
+
+// does everything.
 class Game
 {
 public:
@@ -15,6 +20,7 @@ public:
 	Game & operator=(const Game & other) = delete; // copy assignment
 	Game & operator=(Game&& other) noexcept = delete; // move assignment
 public:
+	void loop();
 	void Update();
 	void Draw();
 	void load_textures();

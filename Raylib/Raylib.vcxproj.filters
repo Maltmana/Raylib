@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\GameSystem">
-      <UniqueIdentifier>{1d081c34-fcfe-484f-b656-0abc8d8324a5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\GameVisual">
       <UniqueIdentifier>{bb3a320d-d59e-494b-846a-4a7874cd105b}</UniqueIdentifier>
     </Filter>
@@ -25,13 +22,16 @@
     <Filter Include="Source Files\main">
       <UniqueIdentifier>{cc4b65d8-5fea-4766-9a55-6f9631ef98a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\1">
+      <UniqueIdentifier>{1d081c34-fcfe-484f-b656-0abc8d8324a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameSystem">
+      <UniqueIdentifier>{88459d91-c682-4840-88aa-f877096a954e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
-      <Filter>Header Files\GameSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="Creature.h">
-      <Filter>Header Files\GameSystem</Filter>
+      <Filter>Header Files\1</Filter>
     </ClInclude>
     <ClInclude Include="Graphic.h">
       <Filter>Header Files\GameVisual</Filter>
@@ -61,6 +61,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Wall.h">
+      <Filter>Header Files\GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Creature.h">
       <Filter>Header Files\GameSystem</Filter>
     </ClInclude>
   </ItemGroup>
