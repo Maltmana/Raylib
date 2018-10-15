@@ -3,8 +3,8 @@
 // load sprites, reserve room for creatures.
 Game::Game()
 {
-	creatures.reserve(1000); // TODO THIS WILL BUG OUT IF GOES PAST RESERVE CAUSE Iterator invalidation rules
-	selectedCreatures.reserve(1000); // TODO THIS WILL BUG OUT IF GOES PAST RESERVE CAUSE Iterator invalidation rules
+	//creatures.reserve(1000); // TODO THIS WILL BUG OUT IF GOES PAST RESERVE CAUSE Iterator invalidation rules
+	//selectedCreatures.reserve(1000); // TODO THIS WILL BUG OUT IF GOES PAST RESERVE CAUSE Iterator invalidation rules
 }
 
 Game::~Game()
@@ -23,7 +23,7 @@ void Game::loop()
 void Game::Update()
 {
 
-	controller.update(paused, creatures, selectedCreatures);
+	controller.Update(paused, creatures, selectedCreatures);
 
 	for (auto & creature : creatures)
 	{

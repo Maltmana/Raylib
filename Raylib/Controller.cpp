@@ -9,62 +9,13 @@ Controller::~Controller()
 {
 }
 
-void Controller::update(bool & p_paused, std::vector<Creature> & p_creatures, std::vector<std::reference_wrapper<Creature>> & p_selectedCreatures)
+void Controller::Update(bool & p_paused, std::list<Creature> & p_creatures, std::list<std::reference_wrapper<Creature>> & p_selectedCreatures)
 {
 
-	if (IsKeyReleased(284))
-	{
-		if (p_paused == false)
-		{
-			p_paused = true;
-		}
-		else
-		{
-			p_paused = false;
-		}
-	}
-
-	if (!p_paused)
-	{
-		if (IsKeyReleased(KEY_SPACE))
-		{
-			p_creatures.emplace_back(GetMousePosition());
-		}
-
-		if (IsMouseButtonPressed(0))
-		{
-			mouseDownPosition = GetMousePosition();
-		}
-
-	}
-
-	// if button is pressed mess with selection rect.
-	if (IsMouseButtonDown(0))
-	{
-		int mouseY = (int)GetMouseY();
-
-		if ((float)GetMouseX() - mouseDownPosition.x <= 0 && (float)GetMouseY() - mouseDownPosition.y <= 0)
-		{
-			selectionRect = { (float)GetMouseX(), (float)GetMouseY(), mouseDownPosition.x - (float)GetMouseX(),mouseDownPosition.y - (float)GetMouseY() };
-		}
-		else if ((float)GetMouseY() - mouseDownPosition.y <= 0)
-		{
-			selectionRect = { mouseDownPosition.x, (float)GetMouseY(), (float)GetMouseX() - mouseDownPosition.x, mouseDownPosition.y - (float)GetMouseY() };
-		}
-		else if ((float)GetMouseX() - mouseDownPosition.x <= 0)
-		{
-			selectionRect = { (float)GetMouseX(), mouseDownPosition.y, mouseDownPosition.x - (float)GetMouseX(),(float)GetMouseY() - mouseDownPosition.y };
-		}
-		else
-		{
-			selectionRect = { mouseDownPosition.x, mouseDownPosition.y,(float)GetMouseX() - mouseDownPosition.x,(float)GetMouseY() - mouseDownPosition.y };
-		}
-	}
-
-	if (IsMouseButtonReleased(0) && !p_paused)
-	{
-		mouseDownPosition = { 0,0 };
-	}
+	TogglePause(p_paused);
+	UpdateMousePos();
+	UpdateMouseDownPos();
+	UpdateSelectionBox();
 
 	if (!p_paused)
 	{
@@ -98,10 +49,78 @@ void Controller::update(bool & p_paused, std::vector<Creature> & p_creatures, st
 		}
 	}
 
+
+
+
+}
+
+void Controller::UpdateMousePos()
+{
+	_mouseX = GetMouseX();
+	_mouseY = GetMouseY();
+
+}
+
+void Controller::UpdateMouseDownPos()
+{
+	if (IsMouseButtonPressed(0))
+	{
+		_mouseDownX = _mouseX;
+		_mouseDownY = _mouseY;
+	}
+	else if (IsMouseButtonReleased(0))
+	{
+		_mouseDownX = 0;
+		_mouseDownY = 0;
+	}
+}
+
+void Controller::TogglePause(bool & p_paused) // TODO add timer so pause doesn't spam.
+{
+	if (IsKeyReleased(284))
+	{
+		if (p_paused == false)
+		{
+			p_paused = true;
+		}
+		else
+		{
+			p_paused = false;
+		}
+	}
+}
+
+void Controller::UpdateSelectionBox()
+{
+	float _mouseX = this->_mouseX; // TODO this is horrible and cheating lol
+	float _mouseY = this->_mouseY;
+	float _mouseDownX = this->_mouseDownX;
+	float _mouseDownY = this->_mouseDownY;
+
+	// set the rect to between mouse curr and mouse down
+	if (IsMouseButtonDown(0))
+	{
+		if (_mouseX - _mouseDownX <= 0 && _mouseY - _mouseDownY <= 0)
+		{
+			selectionRect = { _mouseX, _mouseY, _mouseDownX - _mouseX ,_mouseDownY - _mouseY };
+		}
+		else if (_mouseY - _mouseDownY <= 0)
+		{
+			selectionRect = { _mouseDownX, _mouseY, _mouseX - _mouseDownX, _mouseDownY - _mouseY };
+		}
+		else if (_mouseX - _mouseDownX <= 0)
+		{
+			selectionRect = { _mouseX, _mouseDownY, _mouseDownX - _mouseX,_mouseY - _mouseDownY };
+		}
+		else
+		{
+			selectionRect = { _mouseDownX, _mouseDownY,_mouseX - _mouseDownX,_mouseY - _mouseDownY };
+		}
+	}
+
+	// set rect to default
 	if (!IsMouseButtonDown(0))
 	{
 		selectionRect = { 0,0,0,0 };
 	}
-
-
 }

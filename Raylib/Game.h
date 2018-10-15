@@ -9,7 +9,7 @@
 #include "Graphic.h"
 #include "Controller.h"
 
-// does everything.
+// containers of creatures interact and then containers of graphics used to draw them
 class Game
 {
 public:
@@ -37,8 +37,8 @@ private:
 	bool paused = false;
 	// objects
 	Controller controller;
-	std::vector<Creature> creatures;
-	std::vector<std::reference_wrapper<Creature>> selectedCreatures;
+	std::list<Creature> creatures;
+	std::list<std::reference_wrapper<Creature>> selectedCreatures;
 	CreatureVisualizer cv;
 	std::list<Graphic> graphics;
 

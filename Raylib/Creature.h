@@ -34,9 +34,9 @@ public:
 
 public:
 	// member functions
-	void Update(std::vector<Creature> const & p_creatures);
+	void Update(std::list<Creature> const & p_creatures);
 
-	void collideSolidly(std::vector<Creature> const & p_creatures); // COLLISION LIB
+	void collideSolidly(std::list<Creature> const & p_creatures); // COLLISION LIB
 
 	void run_waypoints();
 

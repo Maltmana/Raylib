@@ -28,6 +28,9 @@
     <Filter Include="Header Files\GameSystem">
       <UniqueIdentifier>{88459d91-c682-4840-88aa-f877096a954e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\User">
+      <UniqueIdentifier>{23a4b4dc-3540-47ac-bbd4-ed0285e79e00}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -57,14 +60,14 @@
     <ClInclude Include="Animation.h">
       <Filter>Header Files\GameVisual</Filter>
     </ClInclude>
-    <ClInclude Include="Controller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Wall.h">
       <Filter>Header Files\GameSystem</Filter>
     </ClInclude>
     <ClInclude Include="Creature.h">
       <Filter>Header Files\GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>Header Files\User</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

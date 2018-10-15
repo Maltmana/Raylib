@@ -15,7 +15,7 @@ Creature::~Creature()
 }
 
 
-void Creature::Update(std::vector<Creature> const & p_creatures)
+void Creature::Update(std::list<Creature> const & p_creatures)
 {
 	Vector2 subtractedVector = RayMath::Vector2Subtract(m_targPos, m_pos);
 	Vector2 normalizedVector = RayMath::Vector2Normalize(subtractedVector);
@@ -53,7 +53,7 @@ void Creature::Update(std::vector<Creature> const & p_creatures)
 
 }
 
-void Creature::collideSolidly(std::vector<Creature> const & p_creatures)
+void Creature::collideSolidly(std::list<Creature> const & p_creatures)
 {
 	for (auto & creature : p_creatures)
 	{

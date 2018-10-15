@@ -1,21 +1,34 @@
 #pragma once
+// std
+// lib
+// non-system
 #include "stdafx.h"
-
+// system
 
 class Creature;
 
-/* Functions for user input and data relevant to user input. */
+// user input 
 class Controller
 {
 public:
 	Controller();
 	~Controller();
 public:
-	void update(bool & p_paused, std::vector<Creature> & p_creatures, std::vector<std::reference_wrapper<Creature>> & p_selectedCreatures);
-
+	void Update(bool & p_paused, std::list<Creature> & p_creatures, std::list<std::reference_wrapper<Creature>> & p_selectedCreatures);
+private:
+	void UpdateMousePos();
+	void UpdateMouseDownPos();
+	void TogglePause(bool & p_paused);
+	void UpdateSelectionBox();
 public:
-	Vector2 mouseDownPosition = { 0,0 };
+	// primitives
+	// flags
+	// objects
 
 	Rectangle selectionRect = { 0,0,0,0 };
-
+private: // TODO make stuff private that needs to be
+	// primitives
+	int _mouseX, _mouseY, _mouseDownX, _mouseDownY;
+	// flags
+	// objects
 };
