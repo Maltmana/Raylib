@@ -20,37 +20,29 @@ public:
 	Game & operator=(const Game & other) = delete; // copy assignment
 	Game & operator=(Game&& other) noexcept = delete; // move assignment
 public:
+	// game loop
 	void loop();
-	void Update();
-	void Draw();
-	void load_textures();
 private:
-
-	// controller
-	Controller controller;
-
-	// creature container
-	std::vector<Creature> creatures;
-
-	// selection system
-	std::vector<std::reference_wrapper<Creature>> selectedCreatures;
-
-	//visualizer
-	CreatureVisualizer cv;
-
-
-
-
-
-
-	// Variables
-	int characterSpritesCol = 18; // MOVE TO FILE
-	int characterSpritesRow = 8; // MOVE TO FILE
-	Graphic characterSprites;
-	Graphic grassTile;
-
+	// run all game world logic
+	void Update();
+	// draw things from game world
+	void Draw();
+	void LoadTextures();
+public:
+private:
+	// primitives
+	int characterSpritesCol = 18; // TODO MOVE TO FILE
+	int characterSpritesRow = 8; // TODO MOVE TO FILE
 	//flags
 	bool paused = false;
+	// objects
+	Controller controller;
+	std::vector<Creature> creatures;
+	std::vector<std::reference_wrapper<Creature>> selectedCreatures;
+	CreatureVisualizer cv;
+	std::list<Graphic> graphics;
+
+
 
 
 };

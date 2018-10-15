@@ -1,10 +1,7 @@
 #include "Game.h"
 
-
+// load sprites, reserve room for creatures.
 Game::Game()
-	:
-	characterSprites("assets/charsprites.png", characterSpritesCol, characterSpritesRow),
-	grassTile("assets/singleTile.png", 1, 1)
 {
 	creatures.reserve(1000); // TODO THIS WILL BUG OUT IF GOES PAST RESERVE CAUSE Iterator invalidation rules
 	selectedCreatures.reserve(1000); // TODO THIS WILL BUG OUT IF GOES PAST RESERVE CAUSE Iterator invalidation rules
@@ -50,15 +47,16 @@ void Game::Draw()
 	// draw creatures
 	for (auto const & creature : creatures)
 	{
-		cv.visualize(creature, characterSprites);
+		cv.visualize(creature, graphics.front());
 	}
 
 
 
 	EndDrawing();
 }
-
-void Game::load_textures()
+// adds some initial textures to graphics
+void Game::LoadTextures()
 {
-
+	graphics.emplace_back("assets/charsprites.png", characterSpritesCol, characterSpritesRow);
+	graphics.emplace_back("assets/singleTile.png", 1, 1);
 }
