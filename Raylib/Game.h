@@ -8,6 +8,7 @@
 #include "CreatureVisualizer.h"
 #include "Graphic.h"
 #include "Controller.h"
+#include "CreatureContainer.h"
 
 // containers of creatures interact and then containers of graphics used to draw them
 class Game
@@ -33,14 +34,17 @@ private:
 	// primitives
 	int characterSpritesCol = 18; // TODO MOVE TO FILE
 	int characterSpritesRow = 8; // TODO MOVE TO FILE
-	//flags
+	// flags
 	bool paused = false;
+	// containers
+	std::list<std::reference_wrapper<Creature>> selectedCreatures;
+	std::list<Graphic> graphics;
 	// objects
 	Controller controller;
-	std::list<Creature> creatures;
-	std::list<std::reference_wrapper<Creature>> selectedCreatures;
+	CreatureContainer _creatureContainer;
 	CreatureVisualizer cv;
-	std::list<Graphic> graphics;
+
+
 
 
 

@@ -21,16 +21,8 @@ void Game::loop()
 
 void Game::Update()
 {
-
-	controller.Update(paused, creatures, selectedCreatures);
-
-	for (auto & creature : creatures)
-	{
-
-		creature.Update(creatures);
-
-	}
-
+	controller.Update(paused, _creatureContainer._creatures, selectedCreatures);
+	_creatureContainer.UpdateCreatures();
 
 }
 
@@ -44,10 +36,7 @@ void Game::Draw()
 	DrawRectangleLinesEx(controller.selectionRect, 2, GREEN);
 
 	// draw creatures
-	for (auto const & creature : creatures)
-	{
-		cv.visualize(creature, graphics.front());
-	}
+	_creatureContainer.DrawCreatures(cv, graphics);
 
 
 

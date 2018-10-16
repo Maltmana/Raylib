@@ -11,11 +11,11 @@ public:
 	CreatureVisualizer();
 	~CreatureVisualizer();
 
-	void visualize(Creature const & creature, Graphic const & graphic);
+	void visualize(Creature const & creature, Graphic const & graphic) const;
 
-	void update_animation(Creature const & creature);
+	void update_animation(Creature const & creature) const;
 
-	void draw(Creature const & creature, Graphic const & graphic);
+	void draw(Creature const & creature, Graphic const & graphic) const;
 
 private:
 

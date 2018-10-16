@@ -10,7 +10,7 @@ CreatureVisualizer::~CreatureVisualizer()
 {
 }
 
-void CreatureVisualizer::visualize(Creature const & creature, Graphic const & graphic)
+void CreatureVisualizer::visualize(Creature const & creature, Graphic const & graphic) const
 {
 
 
@@ -19,11 +19,11 @@ void CreatureVisualizer::visualize(Creature const & creature, Graphic const & gr
 	draw(creature, graphic);
 }
 
-void CreatureVisualizer::update_animation(Creature const & creature)
+void CreatureVisualizer::update_animation(Creature const & creature) const
 {
 }
 
-void CreatureVisualizer::draw(Creature const & creature, Graphic const & graphic)
+void CreatureVisualizer::draw(Creature const & creature, Graphic const & graphic) const
 {
 	float rotation = 0.f;
 	// NOTE: Source rectangle (part of the texture to use for drawing)

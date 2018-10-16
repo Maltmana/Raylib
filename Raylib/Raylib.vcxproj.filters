@@ -69,6 +69,9 @@
     <ClInclude Include="Controller.h">
       <Filter>Header Files\User</Filter>
     </ClInclude>
+    <ClInclude Include="CreatureContainer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -96,6 +99,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Wall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CreatureContainer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
