@@ -14,7 +14,10 @@ public:
 	Controller();
 	~Controller();
 public:
+	// runs selection system and command system
 	void Update(bool & p_paused, std::list<Creature> & p_creatures, std::list<std::reference_wrapper<Creature>> & p_selectedCreatures);
+	// draws selection rectangle
+	void Draw();
 private:
 	void UpdateMousePos();
 	void UpdateMouseDownPos();

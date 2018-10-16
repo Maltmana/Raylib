@@ -28,18 +28,19 @@ void Game::Update()
 
 void Game::Draw()
 {
+	// Ray
 	BeginDrawing();
-
 	ClearBackground(RAYWHITE);
+	// Ray
 
-	// draw selection rect
-	DrawRectangleLinesEx(controller.selectionRect, 2, GREEN);
 
+	// draws UI stuff like selection rect
+	controller.Draw();
 	// draw creatures
 	_creatureContainer.DrawCreatures(cv, graphics);
 
 
-
+	// Ray
 	EndDrawing();
 }
 // adds some initial textures to graphics

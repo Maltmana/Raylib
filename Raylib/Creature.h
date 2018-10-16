@@ -1,37 +1,17 @@
 #pragma once
+// std
+// lib
+// non-system
 #include "stdafx.h"
+#include "Enums.h"
+// system
 #include "Animation.h"
 
-
-enum class CreatureGraphicsTypes
-{
-	Monk,
-	Fabio,
-	DKnight,
-	Wizard,
-	Druid,
-	Priest
-};
-
-enum class FacingDirections
-{
-	North,
-	East,
-	South,
-	West
-};
-
-/* Creature interactions is the point of game. Mainly holds functions and data to carry out those interactions. Secondarily holds visual data that is connected to it. */
 class Creature
 {
 public:
 	Creature(Vector2 const & p_pos);
 	~Creature();
-	// Creature(const Creature& other) = delete; // copy constructor // TODO xmemory error
-	// Creature(Creature&& other) = delete; // move constructor // TODO xmemory error
-	// Creature & operator=(const Creature & other) = delete; // copy assignment // TODO xmemory error
-	// Creature & operator=(Creature&& other) noexcept = delete; // move assignment // TODO xmemory error
-
 public:
 	// member functions
 	void Update(std::list<Creature> const & p_creatures);
@@ -42,9 +22,9 @@ public:
 
 	void change_facing(Vector2 const & p_normalizedVector);
 	void change_targ(Vector2 p_targPos);
-
+private:
 	// member variables
-	public:
+public:
 	Vector2 m_pos;
 	Rectangle m_collision = { 0,0,0,0};
 	Vector2 m_targPos;
@@ -61,6 +41,7 @@ public:
 	bool m_collidingRight = false;
 	bool m_collidingTop = false;
 	bool m_collidingBottom = false;
+private:
 
 };
 

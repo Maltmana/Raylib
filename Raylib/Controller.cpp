@@ -19,6 +19,11 @@ void Controller::Update(bool & p_paused, std::list<Creature> & p_creatures, std:
 	ControlCreatures(p_creatures, p_selectedCreatures);
 }
 
+void Controller::Draw()
+{
+	DrawRectangleLinesEx(selectionRect, 2, GREEN);
+}
+
 void Controller::UpdateMousePos()
 {
 	_mouseX = GetMouseX();
