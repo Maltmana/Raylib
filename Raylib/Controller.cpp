@@ -12,46 +12,11 @@ Controller::~Controller()
 void Controller::Update(bool & p_paused, std::list<Creature> & p_creatures, std::list<std::reference_wrapper<Creature>> & p_selectedCreatures)
 {
 
-	TogglePause(p_paused);
+	TogglePause(p_paused); // TODO implement pause feature
 	UpdateMousePos();
 	UpdateMouseDownPos();
 	UpdateSelectionBox();
-
-	if (!p_paused)
-	{
-		for (Creature & selected : p_selectedCreatures)
-		{
-
-			if (IsMouseButtonReleased(1))
-			{
-				selected.change_targ(GetMousePosition());
-			}
-			if (IsMouseButtonReleased(1) && IsKeyDown(KEY_LEFT_SHIFT))
-			{
-				selected.m_wayPoints.push_back(GetMousePosition());
-			}
-
-
-		}
-	}
-
-
-	if (IsMouseButtonReleased(0))
-	{
-		p_selectedCreatures.clear();
-		for (auto & creature : p_creatures)
-		{
-			if (IsMouseButtonReleased(0) && CheckCollisionRecs(creature.m_collision, selectionRect))
-			{
-				// dont add them until you release the box.
-				p_selectedCreatures.push_back(creature);
-			}
-		}
-	}
-
-
-
-
+	ControlCreatures(p_creatures, p_selectedCreatures);
 }
 
 void Controller::UpdateMousePos()
@@ -119,8 +84,45 @@ void Controller::UpdateSelectionBox()
 	}
 
 	// set rect to default
-	if (!IsMouseButtonDown(0))
+	if (!IsMouseButtonDown(0) && !IsMouseButtonReleased(0))
 	{
 		selectionRect = { 0,0,0,0 };
+	}
+}
+
+void Controller::ControlCreatures(std::list<Creature>& p_creatures, std::list<std::reference_wrapper<Creature>>& p_selectedCreatures)
+{
+	// create creatures
+	if (IsKeyReleased(KEY_SPACE))
+	{
+		p_creatures.emplace_back(GetMousePosition());
+	}
+
+	// move creatures
+		for (Creature & selected : p_selectedCreatures)
+		{
+
+			if (IsMouseButtonReleased(1))
+			{
+				selected.change_targ(GetMousePosition());
+			}
+			if (IsMouseButtonReleased(1) && IsKeyDown(KEY_LEFT_SHIFT))
+			{
+				selected.m_wayPoints.push_back(GetMousePosition());
+			}
+		}
+
+		// select creatures
+	if (IsMouseButtonReleased(0))
+	{
+		p_selectedCreatures.clear();
+		for (auto & creature : p_creatures)
+		{
+			if (IsMouseButtonReleased(0) && CheckCollisionRecs(creature.m_collision, selectionRect))
+			{
+				// dont add them until you release the box.
+				p_selectedCreatures.push_back(creature);
+			}
+		}
 	}
 }

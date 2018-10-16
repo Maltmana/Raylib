@@ -3,8 +3,7 @@
 // load sprites, reserve room for creatures.
 Game::Game()
 {
-	//creatures.reserve(1000); // TODO THIS WILL BUG OUT IF GOES PAST RESERVE CAUSE Iterator invalidation rules
-	//selectedCreatures.reserve(1000); // TODO THIS WILL BUG OUT IF GOES PAST RESERVE CAUSE Iterator invalidation rules
+	LoadTextures();
 }
 
 Game::~Game()

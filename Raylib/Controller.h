@@ -20,11 +20,11 @@ private:
 	void UpdateMouseDownPos();
 	void TogglePause(bool & p_paused);
 	void UpdateSelectionBox();
+	void ControlCreatures(std::list<Creature> & p_creatures, std::list<std::reference_wrapper<Creature>> & p_selectedCreatures);
 public:
 	// primitives
 	// flags
 	// objects
-
 	Rectangle selectionRect = { 0,0,0,0 };
 private: // TODO make stuff private that needs to be
 	// primitives
