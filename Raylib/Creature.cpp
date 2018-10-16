@@ -4,8 +4,7 @@
 // class functions
 Creature::Creature(Vector2 const & p_pos)
 	:
-	m_pos{ p_pos },
-	m_targPos{ p_pos.x + 1, p_pos.y + 1 }
+	m_pos{ p_pos }
 {
 	puts("creature created");
 }
@@ -14,35 +13,15 @@ Creature::~Creature()
 {
 }
 
-
 void Creature::Update(std::list<Creature> const & p_creatures)
 {
-	Vector2 subtractedVector = RayMath::Vector2Subtract(m_targPos, m_pos);
-	Vector2 normalizedVector = RayMath::Vector2Normalize(subtractedVector);
-	if (!(m_pos.x < m_targPos.x + 1 && m_pos.x > m_targPos.x - 1) && !(m_pos.y < m_targPos.y + 1 && m_pos.y > m_targPos.y - 1))
-	{
-
-		Vector2 newPos = RayMath::Vector2Add(m_pos, normalizedVector);
-		if (m_collidingBottom && normalizedVector.y >= 0 || m_collidingTop && normalizedVector.y <= 0)
-		{
-		}
-		else
-		{
-			m_pos.y = newPos.y;
-		}
-		if (m_collidingRight && normalizedVector.x >= 0 || m_collidingLeft && normalizedVector.x <= 0)
-		{
-		}
-		else
-		{
-			m_pos.x = newPos.x;
-		}
-	}
+	CalculateVectorToTarget();
+	Move();
 
 
 	m_collision = { m_pos.x, m_pos.y, 16, 18 },
 
-		change_facing(normalizedVector);
+		change_facing(m_vecToTargNorm);
 
 	run_waypoints();
 
@@ -50,6 +29,20 @@ void Creature::Update(std::list<Creature> const & p_creatures)
 
 
 	m_animation.UpdateAnimation(m_facing);
+
+}
+
+void Creature::Move()
+{
+	// Bug : without deadZone can't see sprites and they shake rapidly back and forth when at targPos.
+	float deadZone = 10.f; // TODO not need so much deadzone
+	if (!(MyHelperLib::approx(m_pos.x, m_targPos.x, deadZone) && MyHelperLib::approx(m_pos.y, m_targPos.y, deadZone)))
+	{
+		float pixPerSecond = _speed * GetFrameTime();
+		Vector2 scaled = RayMath::Vector2Scale(m_vecToTargNorm, pixPerSecond);
+		m_pos = RayMath::Vector2Add(m_pos, scaled);
+	}
+	// Clamp movement for collision
 
 }
 
@@ -154,6 +147,13 @@ void Creature::change_targ(Vector2 p_targPos)
 {
 	m_targPos = p_targPos; // TODO this throws read access violation.
 }
+
+void Creature::CalculateVectorToTarget()
+{
+	m_vecToTarg = RayMath::Vector2Subtract(m_targPos, m_pos);
+	m_vecToTargNorm = RayMath::Vector2Normalize(m_vecToTarg);
+}
+
 
 
 
