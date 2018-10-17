@@ -15,9 +15,7 @@ void CreatureContainer::UpdateCreatures()
 {
 	for (auto & creature : _creatures)
 	{
-
 		creature.Update(_creatures);
-
 	}
 }
 

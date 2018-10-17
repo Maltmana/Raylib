@@ -16,7 +16,7 @@ Creature::~Creature()
 void Creature::Update(std::list<Creature> const & p_creatures)
 {
 	CalculateVectorToTarget();
-	Move();
+	start_move_process(p_creatures);
 
 
 	m_collision = { m_pos.x, m_pos.y, 16, 18 },
@@ -25,83 +25,57 @@ void Creature::Update(std::list<Creature> const & p_creatures)
 
 	run_waypoints();
 
-	collideSolidly(p_creatures);
-
-
 	m_animation.UpdateAnimation(m_facing);
 
 }
 
-void Creature::Move()
+void Creature::start_move_process(std::list<Creature> const & p_creatures)
 {
 	// Bug : without deadZone can't see sprites and they shake rapidly back and forth when at targPos.
-	float deadZone = 10.f; // TODO not need so much deadzone
+	float deadZone = 5.f; // TODO not need so much deadzone
 	if (!(MyHelperLib::approx(m_pos.x, m_targPos.x, deadZone) && MyHelperLib::approx(m_pos.y, m_targPos.y, deadZone)))
 	{
-		float pixPerSecond = _speed * GetFrameTime();
-		Vector2 scaled = RayMath::Vector2Scale(m_vecToTargNorm, pixPerSecond);
-		m_pos = RayMath::Vector2Add(m_pos, scaled);
-	}
-	// Clamp movement for collision
-
-}
-
-void Creature::collideSolidly(std::list<Creature> const & p_creatures)
-{
-	for (auto & creature : p_creatures)
-	{
-		if (m_pos.x != creature.m_pos.x && m_pos.y != creature.m_pos.y)
+		calculate_move();
+		if (is_colliding(p_creatures))
 		{
-			if (m_collision.y <= creature.m_collision.y + creature.m_collision.height &&
-				creature.m_collision.y <= m_collision.y + m_collision.height &&
-				m_collision.x <= creature.m_collision.x + creature.m_collision.width &&
-				creature.m_collision.x <= m_collision.x + m_collision.width)
-			{
-				if (MyHelperLib::approx(m_collision.y, creature.m_collision.y + creature.m_collision.height, 1))
-				{
-					m_collidingTop = true;
-				}
-				else
-				{
-					m_collidingTop = false;
-				}
-
-				if (MyHelperLib::approx(m_collision.y + m_collision.height, creature.m_collision.y, 1))
-				{
-					m_collidingBottom = true;
-				}
-				else
-				{
-					m_collidingBottom = false;
-				}
-
-				if (MyHelperLib::approx(m_collision.x, creature.m_collision.x + creature.m_collision.width, 1))
-				{
-					m_collidingLeft = true;
-				}
-				else
-				{
-					m_collidingLeft = false;
-				}
-
-				if (MyHelperLib::approx(m_collision.x + m_collision.width, creature.m_collision.x, 1))
-				{
-					m_collidingRight = true;
-				}
-				else
-				{
-					m_collidingRight = false;
-				}
-			}
-			else
-			{
-				m_collidingTop = false;
-				m_collidingBottom = false;
-				m_collidingLeft = false;
-				m_collidingRight = false;
-			}
+		}
+		else
+		{
+			Move();
 		}
 	}
+}
+
+void Creature::Move()
+{
+	m_pos = m_newPos;
+}
+
+void Creature::calculate_move()
+{
+	float pixPerSecond = _speed * GetFrameTime();
+	Vector2 scaled = RayMath::Vector2Scale(m_vecToTargNorm, pixPerSecond);
+	m_newPos = RayMath::Vector2Add(m_pos, scaled);
+}
+
+bool Creature::is_colliding(std::list<Creature> const & p_creatures)
+{
+	for (auto const & creature : p_creatures)
+	{
+		if (!(this == &creature))
+		{
+			if (((m_newPos.y < creature.m_collision.y + creature.m_collision.height &&
+				creature.m_collision.y < m_newPos.y + m_collision.height &&
+				m_newPos.x < creature.m_collision.x + creature.m_collision.width &&
+				creature.m_collision.x < m_newPos.x + m_collision.width)))
+			{
+				std::cout << "is colliding!";
+				return true;
+			}
+		}
+
+	}
+	return false;
 }
 
 void Creature::run_waypoints()
