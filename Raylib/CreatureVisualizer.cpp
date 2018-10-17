@@ -36,12 +36,12 @@ void CreatureVisualizer::draw(Creature const & creature, Graphic const & graphic
 	int typeOffset = (graphic.m_frameWidth * 3 * (int)creature.type);
 	int frameOffset = ((creature.m_animation.currentFrame - 1) * graphic.m_frameWidth);
 	sourceRec.x = typeOffset + frameOffset;
-	sourceRec.y = creature.m_animation.currentFrameRow * 18;
-	destRec.x = creature.m_pos.x;
-	destRec.y = creature.m_pos.y;
+	sourceRec.y = creature.m_animation.currentFrameRow * graphic.m_frameHeight;
+	destRec.x = creature.m_pos.x - graphic.m_frameWidth/2;
+	destRec.y = creature.m_pos.y - (graphic.m_frameHeight-1);
 
 	DrawTexturePro(graphic.m_texture, sourceRec, destRec, origin, rotation, WHITE);
 
-	// draw collision box
-	DrawRectangleLinesEx(creature.m_collision, 1, RED);
+	// draw collision sphere
+	DrawCircleLines(creature.m_pos.x, creature.m_pos.y, creature.m_collisionRadius, RED);
 }

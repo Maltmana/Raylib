@@ -25,12 +25,13 @@ private:
 	void CalculateVectorToTarget();
 public:
 	// primitives
+	float m_collisionRadius = {5.f};
+	// structs
 	Vector2 m_pos;
 	Vector2 m_targPos = m_pos;
 	Vector2 m_vecToTarg = { 0.f,0.f };
 	Vector2 m_vecToTargNorm = { 0.f,0.f };
-	Vector2 m_newPos;
-	Rectangle m_collision = { m_pos.x, m_pos.y, 16, 18 };
+	Vector2 m_newPos = { 0.f,0.f };
 	// flags
 	int m_facing = (int)FacingDirections::South;
 	int type = (int)CreatureGraphicsTypes::Druid;

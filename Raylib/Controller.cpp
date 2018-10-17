@@ -123,7 +123,7 @@ void Controller::ControlCreatures(std::list<Creature>& p_creatures, std::list<st
 		p_selectedCreatures.clear();
 		for (auto & creature : p_creatures)
 		{
-			if (IsMouseButtonReleased(0) && CheckCollisionRecs(creature.m_collision, selectionRect))
+			if (IsMouseButtonReleased(0) && CheckCollisionCircleRec(creature.m_pos, creature.m_collisionRadius,selectionRect))
 			{
 				// dont add them until you release the box.
 				p_selectedCreatures.push_back(creature);

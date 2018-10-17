@@ -42,7 +42,6 @@ void Creature::start_move_process(std::list<Creature> const & p_creatures)
 void Creature::Move()
 {
 	m_pos = m_newPos;
-	m_collision = { m_pos.x, m_pos.y, 16, 18 };
 }
 
 void Creature::calculate_move()
@@ -58,10 +57,9 @@ bool Creature::is_colliding(std::list<Creature> const & p_creatures)
 	{
 		if (!(this == &creature))
 		{
-			if (((m_newPos.y < creature.m_collision.y + creature.m_collision.height &&
-				creature.m_collision.y < m_newPos.y + m_collision.height &&
-				m_newPos.x < creature.m_collision.x + creature.m_collision.width &&
-				creature.m_collision.x < m_newPos.x + m_collision.width)))
+			Vector2 differenceVector = RayMath::Vector2Subtract(m_newPos, creature.m_pos);
+
+			if (RayMath::Vector2Length(differenceVector) < m_collisionRadius * 2)
 			{
 				std::cout << "is colliding!";
 				return true;
