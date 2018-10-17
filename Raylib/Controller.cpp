@@ -130,4 +130,30 @@ void Controller::ControlCreatures(std::list<Creature>& p_creatures, std::list<st
 			}
 		}
 	}
+
+	// give creatures a target creature to attack
+	if (IsMouseButtonReleased(1))
+	{
+		Creature const * targetedCreature = nullptr;
+		for (auto const & creature : p_creatures)
+		{
+			if (CheckCollisionPointCircle({ (float)_mouseX, (float)_mouseY}, creature.m_pos, creature.m_collisionRadius))
+			{
+				targetedCreature = &creature;
+				std::cout << "mouse targeted ID: " << targetedCreature->_id << '\n';
+			}
+		}
+		if (targetedCreature != nullptr)
+		{
+			for (Creature & selected : p_selectedCreatures)
+			{
+				if (&selected != targetedCreature)
+				{
+					selected.m_creatureTargetWayPoints.emplace_back(*targetedCreature);
+					std::cout << selected._id << " is emplacing " << targetedCreature->_id << '\n';
+				}
+
+			}
+		}
+	}
 }

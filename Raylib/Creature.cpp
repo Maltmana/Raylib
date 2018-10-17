@@ -1,12 +1,16 @@
 #include "Creature.h"
 
+int Creature::id = 1;
 
 // class functions
 Creature::Creature(Vector2 const & p_pos)
 	:
-	m_pos{ p_pos }
+	m_pos{ p_pos },
+	_id{ id }
 {
-	puts("creature created");
+
+	std::cout << "creature created. ID: " << id << '\n';
+	id++;
 }
 
 Creature::~Creature()
@@ -18,7 +22,10 @@ void Creature::Update(std::list<Creature> const & p_creatures)
 	CalculateVectorToTarget();
 	start_move_process(p_creatures);
 	change_facing(m_vecToTargNorm);
-	run_waypoints();
+	if (m_creatureTargetWayPoints.empty())
+		run_waypoints();
+	else
+		run_creature_waypoints();
 	m_animation.UpdateAnimation(m_facing);
 }
 
@@ -72,14 +79,22 @@ bool Creature::is_colliding(std::list<Creature> const & p_creatures)
 
 void Creature::run_waypoints()
 {
-	if (!m_wayPoints.empty() && m_wayPoints[0].x != m_targPos.x && m_wayPoints[0].y != m_targPos.y)
+	if (!m_wayPoints.empty())
 	{
 		m_targPos = m_wayPoints[0];
-
+		if ((m_pos.x < m_targPos.x + 5 && m_pos.x > m_targPos.x - 5) && (m_pos.y < m_targPos.y + 5 && m_pos.y > m_targPos.y - 5))
+		{
+			m_wayPoints.pop_front();
+		}
 	}
-	if (!m_wayPoints.empty() && (m_pos.x < m_targPos.x + 5 && m_pos.x > m_targPos.x - 5) && (m_pos.y < m_targPos.y + 5 && m_pos.y > m_targPos.y - 5))
+}
+
+void Creature::run_creature_waypoints()
+{
+	int closeness = 100;
+	if (!m_creatureTargetWayPoints.empty())
 	{
-		m_wayPoints.pop_front();
+			m_targPos = m_creatureTargetWayPoints.back().get().m_pos;
 	}
 }
 
@@ -112,6 +127,18 @@ void Creature::change_facing(Vector2 const & p_normalizedVector)
 void Creature::change_targ(Vector2 p_targPos)
 {
 	m_targPos = p_targPos; // TODO this throws read access violation.
+}
+
+void Creature::process_attacking()
+{
+}
+
+void Creature::attack()
+{
+}
+
+void Creature::take_damage()
+{
 }
 
 void Creature::CalculateVectorToTarget()

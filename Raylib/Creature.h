@@ -9,22 +9,31 @@
 
 class Creature
 {
+	static int id;
 public:
 	Creature(Vector2 const & p_pos);
 	~Creature();
 public:
 	void Update(std::list<Creature> const & p_creatures);
+	// MOVEMENT AND COLLISION
 	void start_move_process(std::list<Creature> const & p_creatures);
 	void Move();
 	void calculate_move();
 	bool is_colliding(std::list<Creature> const & p_creatures);
 	void run_waypoints();
+	void run_creature_waypoints();
 	void change_facing(Vector2 const & p_normalizedVector);
 	void change_targ(Vector2 p_targPos);
+	// COMBAT
+	void process_attacking();
+	void attack();
+	void take_damage();
 private:
 	void CalculateVectorToTarget();
 public:
+	// MOVEMENT AND COLLISION
 	// primitives
+	int const _id;
 	float m_collisionRadius = {5.f};
 	// structs
 	Vector2 m_pos;
@@ -40,6 +49,8 @@ public:
 	std::string creatureName = "dude";
 	// objects
 	Animation m_animation;
+	std::deque<std::reference_wrapper<const Creature>> m_creatureTargetWayPoints;
+	// COMBAT
 private:
 	int _speed = 100;
 };
