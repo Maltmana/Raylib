@@ -27,7 +27,7 @@ public:
 	// COMBAT
 	void process_attacking();
 	void attack();
-	void take_damage();
+	void take_damage(int const damage);
 private:
 	void CalculateVectorToTarget();
 public:
@@ -49,8 +49,14 @@ public:
 	std::string creatureName = "dude";
 	// objects
 	Animation m_animation;
-	std::deque<std::reference_wrapper<const Creature>> m_creatureTargetWayPoints;
+	std::deque<std::reference_wrapper<Creature>> m_creatureTargetWayPoints;
 	// COMBAT
+	// primitives
+	float _attackRange = 10 + m_collisionRadius;
+	int _attacksPerSec = 1;
+	float _attackCooldownCounter = 0.f;
+	int _attackDamage = 10;
+	int _hp = 100;
 private:
 	int _speed = 100;
 };

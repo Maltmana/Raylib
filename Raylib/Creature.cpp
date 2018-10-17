@@ -27,6 +27,16 @@ void Creature::Update(std::list<Creature> const & p_creatures)
 	else
 		run_creature_waypoints();
 	m_animation.UpdateAnimation(m_facing);
+
+	// combat
+	if (!m_creatureTargetWayPoints.empty())
+	{
+		if (RayMath::Vector2Length(m_vecToTarg) < _attackRange)
+		{
+			process_attacking();
+		}
+	}
+
 }
 
 void Creature::start_move_process(std::list<Creature> const & p_creatures)
@@ -68,7 +78,6 @@ bool Creature::is_colliding(std::list<Creature> const & p_creatures)
 
 			if (RayMath::Vector2Length(differenceVector) < m_collisionRadius * 2)
 			{
-				std::cout << "is colliding!";
 				return true;
 			}
 		}
@@ -131,14 +140,24 @@ void Creature::change_targ(Vector2 p_targPos)
 
 void Creature::process_attacking()
 {
+	_attackCooldownCounter += GetFrameTime();
+	if (_attackCooldownCounter * _attacksPerSec >= 1)
+	{
+		attack();
+		_attackCooldownCounter = 0;
+	}
+
 }
 
 void Creature::attack()
 {
+	m_creatureTargetWayPoints.back().get().take_damage(_attackDamage);
+	std::cout << _id << " : is attacking\n";
 }
 
-void Creature::take_damage()
+void Creature::take_damage(int const damage)
 {
+
 }
 
 void Creature::CalculateVectorToTarget()
