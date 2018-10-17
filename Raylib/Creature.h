@@ -30,7 +30,7 @@ public:
 	Vector2 m_vecToTarg = { 0.f,0.f };
 	Vector2 m_vecToTargNorm = { 0.f,0.f };
 	Vector2 m_newPos;
-	Rectangle m_collision = { 0.f,0.f,0.f,0.f };
+	Rectangle m_collision = { m_pos.x, m_pos.y, 16, 18 };
 	// flags
 	int m_facing = (int)FacingDirections::South;
 	int type = (int)CreatureGraphicsTypes::Druid;

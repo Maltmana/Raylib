@@ -17,16 +17,9 @@ void Creature::Update(std::list<Creature> const & p_creatures)
 {
 	CalculateVectorToTarget();
 	start_move_process(p_creatures);
-
-
-	m_collision = { m_pos.x, m_pos.y, 16, 18 },
-
-		change_facing(m_vecToTargNorm);
-
+	change_facing(m_vecToTargNorm);
 	run_waypoints();
-
 	m_animation.UpdateAnimation(m_facing);
-
 }
 
 void Creature::start_move_process(std::list<Creature> const & p_creatures)
@@ -49,6 +42,7 @@ void Creature::start_move_process(std::list<Creature> const & p_creatures)
 void Creature::Move()
 {
 	m_pos = m_newPos;
+	m_collision = { m_pos.x, m_pos.y, 16, 18 };
 }
 
 void Creature::calculate_move()
