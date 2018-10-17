@@ -103,17 +103,18 @@ void Controller::ControlCreatures(std::list<Creature>& p_creatures, std::list<st
 		p_creatures.emplace_back(GetMousePosition());
 	}
 
-	// move creatures
+	// move creatures and clear their waypoints.
 		for (Creature & selected : p_selectedCreatures)
 		{
-
-			if (IsMouseButtonReleased(1))
-			{
-				selected.change_targ(GetMousePosition());
-			}
 			if (IsMouseButtonReleased(1) && IsKeyDown(KEY_LEFT_SHIFT))
 			{
 				selected.m_wayPoints.push_back(GetMousePosition());
+			}
+			else if (IsMouseButtonReleased(1))
+			{
+				selected.change_targ(GetMousePosition());
+				selected.m_wayPoints.clear();
+				selected.m_creatureTargetWayPoints.clear();
 			}
 		}
 
