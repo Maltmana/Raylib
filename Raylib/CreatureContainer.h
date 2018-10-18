@@ -14,6 +14,7 @@ public:
 	~CreatureContainer();
 public:
 	void UpdateCreatures();
+	void delete_dead(Creature const & creature_);
 	void DrawCreatures(CreatureVisualizer const & cv_, std::list<Graphic> const & graphics_) const;
 private:
 public:
@@ -22,6 +23,7 @@ public:
 	// containers
 	std::list<Creature> _creatures;
 	// objects
+	std::list<Creature>::iterator _creatureIt;
 private:
 	// primitives
 	// flags

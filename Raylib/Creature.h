@@ -28,6 +28,10 @@ public:
 	void process_attacking();
 	void attack();
 	void take_damage(int const damage);
+	void handle_death();
+
+	// MISC
+	void set_deleteMe();
 private:
 	void CalculateVectorToTarget();
 public:
@@ -55,9 +59,14 @@ public:
 	float _attackRange = 10 + m_collisionRadius;
 	int _attacksPerSec = 1;
 	float _attackCooldownCounter = 0.f;
-	int _attackDamage = 10;
+	int _attackDamage = 50;
 	int _hp = 100;
+	int _isDead = false;
+	// MISC
+	// primitives
+	bool _deleteMe = false;
 private:
 	int _speed = 100;
 };
+
 

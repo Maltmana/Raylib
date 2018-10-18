@@ -15,6 +15,7 @@ Creature::Creature(Vector2 const & p_pos)
 
 Creature::~Creature()
 {
+	std::cout << "creature destroyed. ID: " << id << '\n';
 }
 
 void Creature::Update(std::list<Creature> const & p_creatures)
@@ -35,6 +36,11 @@ void Creature::Update(std::list<Creature> const & p_creatures)
 		{
 			process_attacking();
 		}
+	}
+	handle_death();
+	if (_isDead)
+	{
+		set_deleteMe();
 	}
 
 }
@@ -157,7 +163,23 @@ void Creature::attack()
 
 void Creature::take_damage(int const damage)
 {
+	_hp -= damage;
+	std::cout << _id << ' ' << _hp << " : hp";
+}
 
+void Creature::handle_death()
+{
+	if (_hp <= 0)
+	{
+		_isDead = true;
+	}
+}
+
+
+
+void Creature::set_deleteMe()
+{
+	_deleteMe = true;
 }
 
 void Creature::CalculateVectorToTarget()
