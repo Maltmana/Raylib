@@ -114,7 +114,9 @@ void Controller::ControlCreatures(std::list<Creature>& p_creatures, std::list<st
 			{
 				selected.change_targ(GetMousePosition());
 				selected.m_wayPoints.clear();
-				selected.m_creatureTargetWayPoints.clear();
+				selected.m_creatureTargetWayPoints.clear(); // TODO throws read access violation when a selected dude is killed and then a move command is issued (screen click)  
+															// the selected creature was cleared but still calling this
+															// need to remove selected creature from all lists as soon as he dies...
 			}
 		}
 
@@ -150,7 +152,7 @@ void Controller::ControlCreatures(std::list<Creature>& p_creatures, std::list<st
 			{
 				if (&selected != targetedCreature)
 				{
-					selected.m_creatureTargetWayPoints.emplace_back(*targetedCreature);
+					selected.m_creatureTargetWayPoints.emplace_front(*targetedCreature);
 					std::cout << selected._id << " is emplacing " << targetedCreature->_id << '\n';
 				}
 

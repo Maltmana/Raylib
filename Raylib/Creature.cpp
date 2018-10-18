@@ -9,21 +9,21 @@ Creature::Creature(Vector2 const & p_pos)
 	_id{ id }
 {
 
-	std::cout << "creature created. ID: " << id << '\n';
+	std::cout << "creature created. ID: " << _id << '\n';
 	id++;
 }
 
 Creature::~Creature()
 {
-	std::cout << "creature destroyed. ID: " << id << '\n';
+	std::cout << "creature destroyed. ID: " << _id << '\n';
 }
 
 void Creature::Update(std::list<Creature> const & p_creatures)
 {
 	CalculateVectorToTarget();
 	start_move_process(p_creatures);
-	change_facing(m_vecToTargNorm);
-	if (m_creatureTargetWayPoints.empty())
+	change_facing(m_vecToTargNorm); 
+	if (m_creatureTargetWayPoints.empty()) // TODO bug when something dies it does not get removed from creatureTargetwaypoints
 		run_waypoints();
 	else
 		run_creature_waypoints();
@@ -109,7 +109,7 @@ void Creature::run_creature_waypoints()
 	int closeness = 100;
 	if (!m_creatureTargetWayPoints.empty())
 	{
-			m_targPos = m_creatureTargetWayPoints.back().get().m_pos;
+			m_targPos = m_creatureTargetWayPoints.front().get().m_pos;
 	}
 }
 
@@ -149,22 +149,29 @@ void Creature::process_attacking()
 	_attackCooldownCounter += GetFrameTime();
 	if (_attackCooldownCounter * _attacksPerSec >= 1)
 	{
-		attack();
+		bool isTargKilled = attack(); // returns true if is killed
 		_attackCooldownCounter = 0;
+		if (isTargKilled) // TODO this doesn't work if I have like 5 dudes all attacking one dude. only works for guy who got killing blow.
+		{
+			m_creatureTargetWayPoints.pop_front();
+			puts("popped");
+		}
 	}
 
 }
 
-void Creature::attack()
+bool Creature::attack()
 {
-	m_creatureTargetWayPoints.back().get().take_damage(_attackDamage);
+	
 	std::cout << _id << " : is attacking\n";
+	return m_creatureTargetWayPoints.front().get().take_damage(_attackDamage);
 }
 
-void Creature::take_damage(int const damage)
+bool Creature::take_damage(int const damage)
 {
 	_hp -= damage;
 	std::cout << _id << ' ' << _hp << " : hp";
+	return (_hp<=0);
 }
 
 void Creature::handle_death()

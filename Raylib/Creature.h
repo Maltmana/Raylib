@@ -26,8 +26,10 @@ public:
 	void change_targ(Vector2 p_targPos);
 	// COMBAT
 	void process_attacking();
-	void attack();
-	void take_damage(int const damage);
+		// returns true if creature is killed.
+	bool attack();
+		// returns true if killed
+	bool take_damage(int const damage);
 	void handle_death();
 
 	// MISC
@@ -61,7 +63,7 @@ public:
 	float _attackCooldownCounter = 0.f;
 	int _attackDamage = 50;
 	int _hp = 100;
-	int _isDead = false;
+	bool _isDead = false;
 	// MISC
 	// primitives
 	bool _deleteMe = false;
