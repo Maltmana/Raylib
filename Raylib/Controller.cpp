@@ -114,22 +114,43 @@ void Controller::ControlCreatures(std::list<std::shared_ptr<Creature>> & p_creat
 	{
 		p_creatures.emplace_back(std::shared_ptr<Creature>(new Creature(GetMousePosition())));
 	}
-	// move creatures and clear their waypoints.  // TODO MAKE THEM MOVE RELATIVELY WHEN IN A GROUP SO CAN MAKE CUSTOM FORMATIONS
+
+	// delete creatures
+	if (IsKeyReleased(KEY_DELETE))
+	{
 		for (auto & selected : validatedSelectedCreatures)
 		{
-				if (IsMouseButtonReleased(1) && IsKeyDown(KEY_LEFT_SHIFT))
+			std::list<std::shared_ptr<Creature>>::iterator i = p_creatures.begin();
+			while (i != p_creatures.end())
+			{
+				if (selected == *i)
 				{
-					selected->m_wayPoints.push_back(GetMousePosition());
+					i = p_creatures.erase(i);
 				}
-				else if (IsMouseButtonReleased(1))
+				else
 				{
-					selected->change_targ(GetMousePosition());
-					selected->m_wayPoints.clear();
-					selected->m_creatureTargetWayPoints.clear(); // TODO throws read access violation when a selected dude is killed and then a move command is issued (screen click)  
-																// the selected creature was cleared but still calling this
-																// need to remove selected creature from all lists as soon as he dies...
+					++i;
 				}
+			}
 		}
+	}
+
+	// move creatures and clear their waypoints.  // TODO MAKE THEM MOVE RELATIVELY WHEN IN A GROUP SO CAN MAKE CUSTOM FORMATIONS
+	for (auto & selected : validatedSelectedCreatures)
+	{
+			if (IsMouseButtonReleased(1) && IsKeyDown(KEY_LEFT_SHIFT))
+			{
+				selected->m_wayPoints.push_back(GetMousePosition());
+			}
+			else if (IsMouseButtonReleased(1))
+			{
+				selected->change_targ(GetMousePosition());
+				selected->m_wayPoints.clear();
+				selected->m_creatureTargetWayPoints.clear(); // TODO throws read access violation when a selected dude is killed and then a move command is issued (screen click)  
+															// the selected creature was cleared but still calling this
+															// need to remove selected creature from all lists as soon as he dies...
+			}
+	}
 
 		// select creatures
 	if (IsMouseButtonReleased(0))
