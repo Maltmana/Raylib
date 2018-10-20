@@ -15,7 +15,7 @@ void CreatureContainer::UpdateCreatures()
 {
 	for (auto & creature : _creatures)
 	{
-		creature.Update(_creatures);
+		creature->Update(_creatures);
 	}
 	// TODO huge error
 	// first pass creature that is flagged for delete is successfully deleted.
@@ -36,9 +36,9 @@ void CreatureContainer::UpdateCreatures()
 
 }
 
-void CreatureContainer::delete_dead(Creature const & creature_)
+void CreatureContainer::delete_dead(std::shared_ptr<Creature> & creature_)
 {
-		if (creature_._deleteMe)
+		if (creature_->_deleteMe)
 		{
 
 			_creatureIt = _creatures.erase(_creatureIt);

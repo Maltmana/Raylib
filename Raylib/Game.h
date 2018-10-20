@@ -37,7 +37,7 @@ private:
 	// flags
 	bool paused = false;
 	// containers
-	std::list<std::reference_wrapper<Creature>> selectedCreatures;
+	std::list<std::weak_ptr<Creature>> selectedCreatures;
 	std::list<Graphic> graphics;
 	// objects
 	Controller controller;

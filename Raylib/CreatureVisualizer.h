@@ -1,4 +1,5 @@
 #pragma once
+#include "stdafx.h"
 
 
 class Creature;
@@ -11,11 +12,11 @@ public:
 	CreatureVisualizer();
 	~CreatureVisualizer();
 
-	void visualize(Creature const & creature, Graphic const & graphic) const;
+	void visualize(std::shared_ptr<Creature> const & creature, Graphic const & graphic) const;
 
-	void update_animation(Creature const & creature) const;
+	void update_animation(std::shared_ptr<Creature> const & creature) const;
 
-	void draw(Creature const & creature, Graphic const & graphic) const;
+	void draw(std::shared_ptr<Creature> const & creature, Graphic const & graphic) const;
 
 private:
 

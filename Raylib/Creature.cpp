@@ -18,7 +18,7 @@ Creature::~Creature()
 	std::cout << "creature destroyed. ID: " << _id << '\n';
 }
 
-void Creature::Update(std::list<Creature> const & p_creatures)
+void Creature::Update(std::list<std::shared_ptr<Creature>> const & p_creatures)
 {
 	CalculateVectorToTarget();
 	start_move_process(p_creatures);
@@ -45,7 +45,7 @@ void Creature::Update(std::list<Creature> const & p_creatures)
 
 }
 
-void Creature::start_move_process(std::list<Creature> const & p_creatures)
+void Creature::start_move_process(std::list<std::shared_ptr<Creature>> const & p_creatures)
 {
 	// Bug : without deadZone can't see sprites and they shake rapidly back and forth when at targPos.
 	float deadZone = 5.f; // TODO not need so much deadzone
@@ -74,13 +74,13 @@ void Creature::calculate_move()
 	m_newPos = RayMath::Vector2Add(m_pos, scaled);
 }
 
-bool Creature::is_colliding(std::list<Creature> const & p_creatures)
+bool Creature::is_colliding(std::list<std::shared_ptr<Creature>> const & p_creatures)
 {
 	for (auto const & creature : p_creatures)
 	{
-		if (!(this == &creature))
+		if (!(this == creature.get()))
 		{
-			Vector2 differenceVector = RayMath::Vector2Subtract(m_newPos, creature.m_pos);
+			Vector2 differenceVector = RayMath::Vector2Subtract(m_newPos, creature->m_pos);
 
 			if (RayMath::Vector2Length(differenceVector) < m_collisionRadius * 2)
 			{
@@ -109,7 +109,10 @@ void Creature::run_creature_waypoints()
 	int closeness = 100;
 	if (!m_creatureTargetWayPoints.empty())
 	{
-			m_targPos = m_creatureTargetWayPoints.front().get().m_pos;
+		if (auto const & validCreature = m_creatureTargetWayPoints.front().lock())
+		{
+			m_targPos = validCreature->m_pos;
+		}
 	}
 }
 
@@ -162,9 +165,14 @@ void Creature::process_attacking()
 
 bool Creature::attack()
 {
-	
 	std::cout << _id << " : is attacking\n";
-	return m_creatureTargetWayPoints.front().get().take_damage(_attackDamage);
+	if (!m_creatureTargetWayPoints.empty())
+	{
+		if (auto const & validCreature = m_creatureTargetWayPoints.front().lock())
+		{
+			return validCreature->take_damage(_attackDamage);
+		}
+	}
 }
 
 bool Creature::take_damage(int const damage)

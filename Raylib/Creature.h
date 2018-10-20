@@ -14,12 +14,12 @@ public:
 	Creature(Vector2 const & p_pos);
 	~Creature();
 public:
-	void Update(std::list<Creature> const & p_creatures);
+	void Update(std::list<std::shared_ptr<Creature>> const & p_creatures);
 	// MOVEMENT AND COLLISION
-	void start_move_process(std::list<Creature> const & p_creatures);
+	void start_move_process(std::list<std::shared_ptr<Creature>> const & p_creatures);
 	void Move();
 	void calculate_move();
-	bool is_colliding(std::list<Creature> const & p_creatures);
+	bool is_colliding(std::list<std::shared_ptr<Creature>> const & p_creatures);
 	void run_waypoints();
 	void run_creature_waypoints();
 	void change_facing(Vector2 const & p_normalizedVector);
@@ -55,7 +55,7 @@ public:
 	std::string creatureName = "dude";
 	// objects
 	Animation m_animation;
-	std::deque<std::reference_wrapper<Creature>> m_creatureTargetWayPoints;
+	std::deque<std::weak_ptr<Creature>> m_creatureTargetWayPoints;
 	// COMBAT
 	// primitives
 	float _attackRange = 10 + m_collisionRadius;
