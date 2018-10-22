@@ -1,16 +1,5 @@
 #pragma once
-
-enum class GraphicsTypes
-{
-	Monk,
-	Fabio,
-	DKnight,
-	Wizard,
-	Druid,
-	Priest,
-	ThunderSword,
-	BootsOfSpeed
-};
+#include "Enums.h"
 
 struct GraphicsComponent
 {

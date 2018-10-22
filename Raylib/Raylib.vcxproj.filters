@@ -51,9 +51,6 @@
     <ClInclude Include="Game.h">
       <Filter>Header Files\1</Filter>
     </ClInclude>
-    <ClInclude Include="Graphic.h">
-      <Filter>Header Files\GameVisual</Filter>
-    </ClInclude>
     <ClInclude Include="MyHelperLib.h">
       <Filter>Header Files\Misc</Filter>
     </ClInclude>
@@ -102,9 +99,6 @@
     <ClInclude Include="PhysicalComponent.h">
       <Filter>Header Files\1\ECS\Components</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicsComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CombatComponent.h">
       <Filter>Header Files\1\ECS\Components</Filter>
     </ClInclude>
@@ -116,6 +110,24 @@
     </ClInclude>
     <ClInclude Include="ComponentContainer.h">
       <Filter>Header Files\1\ECS\Components\ComponentContainer</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsSystem.h">
+      <Filter>Header Files\1\ECS\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureProvider.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsComponent.h">
+      <Filter>Header Files\1\ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationComponent.h">
+      <Filter>Header Files\1\ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationSystem.h">
+      <Filter>Header Files\1\ECS\Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +183,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AIComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureProvider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

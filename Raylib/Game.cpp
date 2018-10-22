@@ -2,6 +2,8 @@
 
 // load sprites, reserve room for creatures.
 Game::Game()
+	:
+	_graphicsSystem(_graphicsContainer)
 {
 	LoadTextures();
 }
@@ -39,21 +41,6 @@ void Game::Draw()
 	// draw creatures
 	_creatureContainer.DrawCreatures(cv, graphics);
 
-	// delete
-	float rotation = 0.f;
-	// NOTE: Source rectangle (part of the texture to use for drawing)
-	Rectangle sourceRec = { 0, 0, 16, 16 };
-	// NOTE: Destination rectangle (screen rectangle where drawing part of texture)
-	Rectangle destRec = { 100,100, 32, 32};
-	// NOTE: Origin of the texture (rotation/scale point), it's relative to destination rectangle size
-	Vector2 origin = { 0,0 };
-
-	int typeOffset = (0);
-	int frameOffset = (0);
-
-	DrawTexturePro(graphics.back().m_texture, sourceRec, destRec, origin, rotation, WHITE);
-	// delete
-
 	DrawTextEx(GetFontDefault(), "hey", { 20,20 }, 14, 3, RED);
 
 	// Ray
@@ -62,8 +49,11 @@ void Game::Draw()
 // adds some initial textures to graphics
 void Game::LoadTextures()
 {
-	graphics.emplace_back("assets/charsprites.png", characterSpritesCol, characterSpritesRow);
-	graphics.emplace_back("assets/singleTile.png", 1, 1);
-	graphics.emplace_back("assets/BootsOfSpeed.png", 1, 1);
-	items.emplace_back();
+	_graphicsContainer.emplace_back("assets/FemaleSoldier.png", GraphicsTypes::FemaleSoldier, _characterSpriteSizeX, _characterSpriteSizeY);
+	_graphicsContainer.emplace_back("assets/MaleBarbarian.png", GraphicsTypes::MaleBarbarian, _characterSpriteSizeX, _characterSpriteSizeY);
+	_graphicsContainer.emplace_back("assets/MaleDarkKnight.png", GraphicsTypes::MaleDarkKnight, _characterSpriteSizeX, _characterSpriteSizeY);
+	_graphicsContainer.emplace_back("assets/MaleWarrior.png", GraphicsTypes::MaleWarrior, _characterSpriteSizeX, _characterSpriteSizeY);
+	_graphicsContainer.emplace_back("assets/BootsOfSpeed.png", GraphicsTypes::BootsOfSpeed, _itemSpriteSizeX, _itemSpriteSizeY);
+	_graphicsContainer.emplace_back("assets/ThunderSword.png", GraphicsTypes::ThunderSword, _itemSpriteSizeX, _itemSpriteSizeY);
+	Graphics
 }

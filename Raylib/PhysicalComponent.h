@@ -15,13 +15,13 @@ struct PhysicalComponent
 	Vector2 _velocity;
 	float _speed;
 	// movement temporary stuff
-	Vector2 m_targPos = _position;
-	Vector2 m_vecToTarg = { 0.f,0.f };
-	Vector2 m_vecToTargNorm = { 0.f,0.f };
-	Vector2 m_newPos = { 0.f,0.f };
+	Vector2 _targPos = _position;
+	Vector2 _vecToTarg = { 0.f,0.f };
+	Vector2 _vecToTargNorm = { 0.f,0.f };
+	Vector2 _newPos = { 0.f,0.f };
 	// direction
-	int m_facing = (int)FacingDirections::South;
+	FacingDirections _facing = FacingDirections::South;
 	// collision
-	float m_collisionRadius = { 5.f };
+	float _collisionRadius = { 5.f };
 };
 
