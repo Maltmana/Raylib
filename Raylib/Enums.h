@@ -10,6 +10,12 @@ enum class CreatureGraphicsTypes
 	Priest
 };
 
+enum class ItemGraphicsTypes
+{
+	ThunderSword,
+	BootsOfSpeed
+};
+
 enum class FacingDirections
 {
 	North,

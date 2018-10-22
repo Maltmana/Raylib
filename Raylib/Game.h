@@ -9,6 +9,7 @@
 #include "Graphic.h"
 #include "Controller.h"
 #include "CreatureContainer.h"
+#include "Item.h"
 
 // containers of creatures interact and then containers of graphics used to draw them
 class Game
@@ -38,6 +39,7 @@ private:
 	bool paused = false;
 	// containers
 	std::list<std::weak_ptr<Creature>> selectedCreatures;
+	std::list<std::shared_ptr<std::vector<Item>>> items;
 	std::list<Graphic> graphics;
 	// objects
 	Controller controller;
