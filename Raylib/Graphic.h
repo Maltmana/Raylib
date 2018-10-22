@@ -25,7 +25,7 @@ public:
 	int const _spriteSizeY;
 	int const _nSpriteRows = _texture.height / _spriteSizeY;
 	int const _nSpritesCols = _texture.width / _spriteSizeX;
-	Vector2 _origin = { _spriteSizeX / 2, _spriteSizeY / 2 };
+	Vector2 _origin = { (float)_spriteSizeX / 2, (float)_spriteSizeY / 2 };
 	// objects
 	Texture2D const _texture;
 private:
