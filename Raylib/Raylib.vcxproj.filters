@@ -31,6 +31,21 @@
     <Filter Include="Header Files\User">
       <UniqueIdentifier>{23a4b4dc-3540-47ac-bbd4-ed0285e79e00}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\1\ECS">
+      <UniqueIdentifier>{36738062-b507-43b1-a0d1-e4d2f4e357de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\1\ECS\Entity">
+      <UniqueIdentifier>{3485d13e-3ac5-4b5e-8de8-535409dcad60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\1\ECS\Components">
+      <UniqueIdentifier>{eb3a358e-fe1f-4a85-aecc-ce59fca14c16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\1\ECS\Components\ComponentContainer">
+      <UniqueIdentifier>{7376067d-ba64-4702-bed9-b2f5433d7f8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\1\ECS\Systems">
+      <UniqueIdentifier>{0c0a7ddd-e24e-4fc9-a9f4-c66ba49c6cff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -81,6 +96,27 @@
     <ClInclude Include="Item.h">
       <Filter>Header Files\GameSystem</Filter>
     </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files\1\ECS\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicalComponent.h">
+      <Filter>Header Files\1\ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatComponent.h">
+      <Filter>Header Files\1\ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIComponent.h">
+      <Filter>Header Files\1\ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentContainer.h">
+      <Filter>Header Files\1\ECS\Components\ComponentContainer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -119,5 +155,28 @@
     <ClCompile Include="Item.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentContainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicalComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Raylib.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

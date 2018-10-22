@@ -9,7 +9,7 @@
 
 class Creature
 {
-	static int id;
+	static int id; //
 public:
 	Creature(Vector2 const & p_pos);
 	~Creature();
@@ -39,17 +39,17 @@ private:
 public:
 	// MOVEMENT AND COLLISION
 	// primitives
-	int const _id;
+	int const _id; // 
 	float m_collisionRadius = {5.f};
 	// structs
-	Vector2 m_pos;
+	Vector2 m_pos; //
 	Vector2 m_targPos = m_pos;
 	Vector2 m_vecToTarg = { 0.f,0.f };
 	Vector2 m_vecToTargNorm = { 0.f,0.f };
 	Vector2 m_newPos = { 0.f,0.f };
 	// flags
 	int m_facing = (int)FacingDirections::South;
-	int type = (int)CreatureGraphicsTypes::Druid;
+	int type = (int)CreatureGraphicsTypes::Druid; //
 	// containers
 	std::deque<Vector2> m_wayPoints;
 	std::string creatureName = "dude";
