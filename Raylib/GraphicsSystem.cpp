@@ -43,6 +43,7 @@ void GraphicsSystem::draw(GraphicsComponent const & graphicsComp_, PhysicalCompo
 			DrawTexturePro(graphic.get()->_texture, sourceRec, destRec, graphic.get()->_origin, rotation, WHITE);
 			// draw collision sphere
 			DrawCircleLines(physicalComp_._position.x, physicalComp_._position.y, physicalComp_._collisionRadius, RED);
+			return;
 		}
 	}
 

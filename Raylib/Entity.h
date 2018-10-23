@@ -15,9 +15,10 @@ class Entity
 public:
 	Entity(std::unique_ptr<PhysicalComponent> physicalComponent_ = nullptr,
 		std::unique_ptr<GraphicsComponent> graphicsComponent_ = nullptr,
+		std::unique_ptr<AnimationComponent> animationComponent_ = nullptr,
 		std::unique_ptr<CombatComponent> combatComponent_ = nullptr,
-		std::unique_ptr<AIComponent> aiComponent_ = nullptr,
-		std::unique_ptr<AnimationComponent> animationComponent_ = nullptr); /*!< Sets _id to statID and increments statID */
+		std::unique_ptr<AIComponent> aiComponent_ = nullptr);/*!< Sets _id to statID and increments statID */
+
 	~Entity();
 public:
 private:

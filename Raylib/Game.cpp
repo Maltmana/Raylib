@@ -26,6 +26,14 @@ void Game::loop()
 
 void Game::Update()
 {
+	for (auto entity : _entityContainer)
+	{
+		if (entity->_physicalComponent != nullptr && entity->_animationComponent != nullptr)
+		{
+			_animationSystem.UpdateAnimation(*entity->_animationComponent.get(), entity->_physicalComponent->_facing);
+		}
+	}
+
 }
 
 void Game::DrawProcess()
@@ -40,7 +48,7 @@ void Game::Draw()
 {
 	for (auto entity : _entityContainer)
 	{
-		if (entity->_graphicsComponent != nullptr)
+		if (entity->_graphicsComponent != nullptr && entity->_physicalComponent != nullptr && entity->_animationComponent != nullptr)
 		{
 			_graphicsSystem.draw(*entity->_graphicsComponent,
 				*entity->_physicalComponent,
@@ -63,8 +71,10 @@ void Game::LoadTextures()
 
 void Game::MakeTestEntities()
 {
-	Vector2 v2 = { 300.f,300.f };
-	_entityContainer.emplace_back(std::make_unique<Entity>(std::make_unique<PhysicalComponent>(), std::make_unique<GraphicsComponent>(GraphicsTypes::MaleDarkKnight)));
+	_entityContainer.emplace_back(std::make_unique<Entity>());
 	std::cout << "making test entity #: " << _entityContainer.back()->_id << '\n';
+	_entityContainer.emplace_back(std::make_unique<Entity>(std::make_unique<PhysicalComponent>(Vector2{ 300.f,300.f }), std::make_unique<GraphicsComponent>(GraphicsTypes::MaleDarkKnight), std::make_unique<AnimationComponent>()));
+	std::cout << "making test entity #: " << _entityContainer.back()->_id << '\n';
+	_entityContainer.emplace_back(std::make_unique<Entity>(std::make_unique<PhysicalComponent>(Vector2{ 200.f,200.f }), std::make_unique<GraphicsComponent>(GraphicsTypes::FemaleSoldier), std::make_unique<AnimationComponent>()));
 	std::cout << "making test entity #: " << _entityContainer.back()->_id << '\n';
 }

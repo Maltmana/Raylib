@@ -28,14 +28,14 @@ void AnimationSystem::UpdateAnimation(AnimationComponent & animationComponent_, 
 		break;
 	}
 
-	// animation column.
+	// animation column. //2
 	animationComponent_._elapsedAnimTime = animationComponent_._elapsedAnimTime + GetFrameTime();
 	if (animationComponent_._elapsedAnimTime >= animationComponent_._animTime)
 	{
 		if (animationComponent_._rising)
 		{
 			animationComponent_._currentFrameCol += 1;
-			if (animationComponent_._currentFrameCol == animationComponent_._frameAmount)
+			if (animationComponent_._currentFrameCol >= animationComponent_._frameAmount - 1)
 			{
 				animationComponent_._rising = false;
 			}
@@ -43,7 +43,7 @@ void AnimationSystem::UpdateAnimation(AnimationComponent & animationComponent_, 
 		else
 		{
 			animationComponent_._currentFrameCol -= 1;
-			if (animationComponent_._currentFrameCol == 1)
+			if (animationComponent_._currentFrameCol <= 0)
 			{
 				animationComponent_._rising = true;
 			}
