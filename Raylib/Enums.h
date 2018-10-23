@@ -19,7 +19,9 @@ enum class GraphicsTypes
 	FemaleSoldier,
 	MaleBarbarian,
 	MaleDarkKnight,
-	MaleWarrior,
+	FemaleCaveman,
+	FemaleNoble,
+	MaleNoble,
 	ThunderSword,
 	BootsOfSpeed
 };

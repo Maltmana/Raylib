@@ -22,6 +22,6 @@ struct PhysicalComponent
 	// direction
 	FacingDirections _facing = FacingDirections::South;
 	// collision
-	float _collisionRadius = { 5.f };
+	float _collisionRadius = { 15.f };
 };
 

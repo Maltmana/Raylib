@@ -21,6 +21,7 @@ void GraphicsSystem::draw(GraphicsComponent const & graphicsComp_, PhysicalCompo
 	{
 		if (graphic.get()->_graphicType == graphicsComp_._graphicsType)
 		{
+			float scale = 2;
 
 			//NOTE: Source rectangle (part of the texture to use for drawing)
 			// animation system needs to provide X and Y here...
