@@ -3,6 +3,7 @@
 
 struct GraphicsComponent
 {
+	typedef std::unique_ptr<GraphicsComponent> upt;
 	GraphicsComponent(GraphicsTypes graphicsType_);
 	~GraphicsComponent();
 	// NO FUNCTIONS

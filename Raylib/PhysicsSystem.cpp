@@ -1,14 +1,14 @@
-//#include "stdafx.h"
-//#include "PhysicsSystem.h"
-//
-//
-//PhysicsSystem::PhysicsSystem()
-//{
-//}
-//
-//PhysicsSystem::~PhysicsSystem()
-//{
-//}
+#include "stdafx.h"
+#include "PhysicsSystem.h"
+
+
+PhysicsSystem::PhysicsSystem()
+{
+}
+
+PhysicsSystem::~PhysicsSystem()
+{
+}
 //
 //void PhysicsSystem::Update(Vector2 const & targetVector, PhysicalComponent & physicalComponent_, std::list<std::shared_ptr<Creature>> const & p_creatures)
 //{

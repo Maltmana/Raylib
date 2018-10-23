@@ -7,7 +7,7 @@
 
 struct PhysicalComponent
 {
-	PhysicalComponent(Vector2 position_, Vector2 velocity_ = { 0.f,0.f }, float speed_ = {0.f});
+	PhysicalComponent(Vector2 position_ = { 0.f,0.f }, Vector2 velocity_ = { 0.f,0.f }, float speed_ = { 0.f });
 	~PhysicalComponent();
 	// NO FUNCTIONS
 	// movement

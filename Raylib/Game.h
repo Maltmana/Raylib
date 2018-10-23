@@ -6,7 +6,13 @@
 // system
 #include "Entity.h"
 #include "Graphic.h"
+// systems
 #include "GraphicsSystem.h"
+#include "PhysicsSystem.h"
+#include "AISystem.h"
+#include "CombatSystem.h"
+#include "AnimationSystem.h"
+#include "Entity.h"
 
 // containers of creatures interact and then containers of graphics used to draw them
 class Game
@@ -28,6 +34,7 @@ private:
 	void DrawProcess();
 	void Draw();
 	void LoadTextures();
+	void MakeTestEntities();
 public:
 	// static
 	static bool paused;
@@ -46,6 +53,10 @@ private:
 	// Components
 	// Systems
 	GraphicsSystem _graphicsSystem;
+	PhysicsSystem _physicsSystem;
+	AISystem _aiSystem;
+	CombatSystem _combatSystem;
+	AnimationSystem _animationSystem;
 
 
 
