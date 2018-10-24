@@ -13,13 +13,13 @@ public:
 	PhysicsSystem();
 	~PhysicsSystem();
 public:
-	//void Update(Vector2 const & targetVector_, PhysicalComponent & physicalComponent_, std::vector<std::shared_ptr<PhysicalComponent>> const & allPhysicsComponents_);
-	//void start_move_process();
-	//void Move();
-	//void calculate_move();
-	//bool is_colliding();
-	//void change_facing();
-	//void CalculateVectorToTarget();
+	void Update(Vector2 const & targetVector_, PhysicalComponent & physicalComponent_, std::vector<std::shared_ptr<PhysicalComponent>> const & allPhysicsComponents_);
+	void start_move_process();
+	void Move();
+	void calculate_move();
+	bool is_colliding();
+	void change_facing();
+	void CalculateVectorToTarget();
 
 	//// cached reference
 	//PhysicalComponent * _physicalComponent;

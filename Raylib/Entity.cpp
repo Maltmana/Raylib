@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Entity.h"
 
+
+
 int Entity::staticID = 1;
 Entity::Entity(std::unique_ptr<PhysicalComponent> physicalComponent_,
 	std::unique_ptr<GraphicsComponent> graphicsComponent_,

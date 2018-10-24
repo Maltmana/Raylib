@@ -30,6 +30,7 @@ void Game::Update()
 	{
 		if (entity->_physicalComponent != nullptr && entity->_animationComponent != nullptr)
 		{
+			_physicsSystem.Update(GetMousePosition(),*entity->_physicalComponent.get(), );
 			_animationSystem.UpdateAnimation(*entity->_animationComponent.get(), entity->_physicalComponent->_facing);
 		}
 	}
