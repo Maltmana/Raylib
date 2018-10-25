@@ -3,33 +3,30 @@
 // lib
 // non-system
 #include "stdafx.h"
+#include "Enums.h"
 // system
 
-/* Holds loaded texture with data connected to that texture. */
+
+// in : path and sprite size and enum association. from this rows and columns are generated. rows = directions. columns = frames of animation.
+// association is used by TextureProvider
 class Graphic
 {
 public:
-	Graphic(const char * p_path, int p_nSpritesCol, int p_nSpritesRow)
-		:
-		m_texture{ LoadTexture(p_path) },
-		m_nSpritesCol{ p_nSpritesCol },
-		m_nSpriteRow{ p_nSpritesRow }
-	{
-	}
-	~Graphic()
-	{
-		UnloadTexture(m_texture);
-	}
+	Graphic(const char * filePath_, GraphicsTypes graphicType_, int spriteSizeX_, int spriteSizeY_);
+	~Graphic();
 public:
 private:
 public:
-	// objects
-	Texture2D const m_texture;
+	// flags
+	// enums
+	GraphicsTypes _graphicType;
 	// primitives
-	int const m_nSpritesCol;
-	int const m_nSpriteRow;
-	int const m_frameWidth = m_texture.width / m_nSpritesCol;
-	int const m_frameHeight = m_texture.height / m_nSpriteRow;
+	int const _spriteSizeX;
+	int const _spriteSizeY;
+	int const _nSpriteRows = _texture.height / _spriteSizeY;
+	int const _nSpritesCols = _texture.width / _spriteSizeX;
+	Vector2 _origin = { (float)_spriteSizeX / 2, (float)_spriteSizeY / 2 };
+	// objects
+	Texture2D const _texture;
 private:
-
 };

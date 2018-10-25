@@ -4,12 +4,15 @@
 // non-system
 #include "stdafx.h"
 // system
-#include "Creature.h"
-#include "CreatureVisualizer.h"
+#include "Entity.h"
 #include "Graphic.h"
-#include "Controller.h"
-#include "CreatureContainer.h"
-#include "Item.h"
+// systems
+#include "GraphicsSystem.h"
+#include "PhysicsSystem.h"
+#include "AISystem.h"
+#include "CombatSystem.h"
+#include "AnimationSystem.h"
+#include "Entity.h"
 
 // containers of creatures interact and then containers of graphics used to draw them
 class Game
@@ -28,23 +31,32 @@ private:
 	// run all game world logic
 	void Update();
 	// draw things from game world
+	void DrawProcess();
 	void Draw();
 	void LoadTextures();
+	void MakeTestEntities();
 public:
+	// static
+	static bool paused;
 private:
 	// primitives
-	int characterSpritesCol = 18; // TODO MOVE TO FILE
-	int characterSpritesRow = 8; // TODO MOVE TO FILE
+	int _characterSpriteSizeX = 16; // TODO MOVE TO FILE
+	int _characterSpriteSizeY = 18; // TODO MOVE TO FILE
+	int _itemSpriteSizeX = 16; // TODO MOVE TO FILE
+	int _itemSpriteSizeY = 16; // TODO MOVE TO FILE
 	// flags
-	bool paused = false;
-	// containers
-	std::list<std::weak_ptr<Creature>> selectedCreatures;
-	std::list<std::shared_ptr<std::vector<Item>>> items;
-	std::list<Graphic> graphics;
-	// objects
-	Controller controller;
-	CreatureContainer _creatureContainer;
-	CreatureVisualizer cv;
+
+	// graphics
+	std::vector<std::unique_ptr<Graphic>> _graphicsContainer;
+	// Entities
+	std::vector<std::shared_ptr<Entity>> _entityContainer;
+	// Components
+	// Systems
+	GraphicsSystem _graphicsSystem;
+	PhysicsSystem _physicsSystem;
+	AISystem _aiSystem;
+	CombatSystem _combatSystem;
+	AnimationSystem _animationSystem;
 
 
 
