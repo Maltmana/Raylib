@@ -49,10 +49,10 @@ void EntityContainer::delete_dead(std::shared_ptr<Creature> & creature_)
 		}
 }
 
-void EntityContainer::DrawCreatures(CreatureVisualizer const & cv_, std::list<Graphic> const & graphics_) const
+void EntityContainer::DrawCreatures(CreatureVisualizer const & cv_, std::vector<std::unique_ptr<Graphic>> const & graphics_) const
 {
 	for (auto const & creature : _entities)
 	{
-		cv_.visualize(creature, graphics_.front());
+		cv_.visualize(creature, *graphics_.front().get());
 	}
 }

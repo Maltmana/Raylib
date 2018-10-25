@@ -47,7 +47,7 @@ private:
 	bool paused = false;
 	// containers
 	std::list<std::shared_ptr<std::vector<Item>>> items;
-	std::list<Graphic> graphics;
+	std::vector<std::unique_ptr<Graphic>> _graphics;
 	// objects
 	Controller controller;
 	EntityContainer _entityContainer;

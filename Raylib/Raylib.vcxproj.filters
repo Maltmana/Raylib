@@ -84,6 +84,9 @@
     <ClInclude Include="EntityContainer.h">
       <Filter>Header Files\CustomContainers</Filter>
     </ClInclude>
+    <ClInclude Include="GraphicsContainer.h">
+      <Filter>Header Files\CustomContainers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -120,6 +123,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EntityContainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsContainer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
