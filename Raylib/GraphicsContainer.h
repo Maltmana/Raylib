@@ -8,8 +8,8 @@ public:
 public:
 private:
 public:
-	inline std::vector<Graphic>& getGraphics() { return _graphics; };
+	inline std::vector<std::unique_ptr<Graphic>>& getGraphics() { return _graphics; };
 private:
-	std::vector<Graphic> _graphics;
+	std::vector<std::unique_ptr<Graphic>> _graphics;
 };
 
