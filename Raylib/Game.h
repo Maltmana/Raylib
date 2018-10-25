@@ -10,6 +10,7 @@
 #include "Controller.h"
 #include "EntityContainer.h"
 #include "Item.h"
+#include "GraphicsContainer.h"
 
 
 /*
@@ -47,7 +48,7 @@ private:
 	bool paused = false;
 	// containers
 	std::list<std::shared_ptr<std::vector<Item>>> items;
-	std::vector<std::unique_ptr<Graphic>> _graphics;
+	GraphicsContainer _graphicContainer;
 	// objects
 	Controller controller;
 	EntityContainer _entityContainer;

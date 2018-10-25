@@ -37,7 +37,7 @@ void Game::Draw()
 	// draws UI stuff like selection rect
 	controller.Draw();
 	// draw creatures
-	_entityContainer.DrawCreatures(cv, _graphics);
+	_entityContainer.DrawCreatures(cv, _graphicContainer);
 
 	// delete
 	float rotation = 0.f;
@@ -51,7 +51,7 @@ void Game::Draw()
 	int typeOffset = (0);
 	int frameOffset = (0);
 
-	DrawTexturePro(_graphics.back()->m_texture, sourceRec, destRec, origin, rotation, WHITE);
+	DrawTexturePro(_graphicContainer.getGraphics().back()->m_texture, sourceRec, destRec, origin, rotation, WHITE);
 	// delete
 
 
@@ -61,8 +61,8 @@ void Game::Draw()
 // adds some initial textures to graphics
 void Game::LoadTextures()
 {
-	_graphics.emplace_back(std::make_unique<Graphic>("assets/charsprites.png", characterSpritesCol, characterSpritesRow));
-	_graphics.emplace_back(std::make_unique<Graphic>("assets/singleTile.png", 1, 1));
-	_graphics.emplace_back(std::make_unique<Graphic>("assets/BootsOfSpeed.png", 1, 1));
+	_graphicContainer.getGraphics().emplace_back(std::make_unique<Graphic>("assets/charsprites.png", characterSpritesCol, characterSpritesRow));
+	_graphicContainer.getGraphics().emplace_back(std::make_unique<Graphic>("assets/singleTile.png", 1, 1));
+	_graphicContainer.getGraphics().emplace_back(std::make_unique<Graphic>("assets/BootsOfSpeed.png", 1, 1));
 	items.emplace_back();
 }
