@@ -18,12 +18,12 @@ public:
 	Creature(Vector2 const & p_pos);
 	~Creature();
 public:
-	void Update(EntityContainer & creatures_);
+	void Update(EntityContainer & entityContainer_);
 	// MOVEMENT AND COLLISION
-	void start_move_process(EntityContainer & creatures_);
+	void start_move_process(EntityContainer & entityContainer_);
 	void Move();
 	void calculate_move();
-	bool is_colliding(EntityContainer & creatures_);
+	bool is_colliding(EntityContainer & entityContainer_);
 	void run_waypoints();
 	void run_creature_waypoints();
 	void change_facing(Vector2 const & p_normalizedVector);

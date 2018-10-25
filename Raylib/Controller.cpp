@@ -10,14 +10,14 @@ Controller::~Controller()
 {
 }
 
-void Controller::Update(bool & p_paused, EntityContainer& entities_, std::list<std::weak_ptr<Creature>>& p_selectedCreatures)
+void Controller::Update(bool & p_paused, EntityContainer& entityContainer_, std::list<std::weak_ptr<Creature>>& p_selectedCreatures)
 {
 
 	TogglePause(p_paused); // TODO implement pause feature
 	UpdateMousePos();
 	UpdateMouseDownPos();
 	UpdateSelectionBox();
-	ControlCreatures(entities_, p_selectedCreatures);
+	ControlCreatures(entityContainer_, p_selectedCreatures);
 }
 
 void Controller::Draw()
@@ -96,7 +96,7 @@ void Controller::UpdateSelectionBox()
 	}
 }
 
-void Controller::ControlCreatures(EntityContainer& entities_, std::list<std::weak_ptr<Creature>> & p_selectedCreatures)
+void Controller::ControlCreatures(EntityContainer& entityContainer_, std::list<std::weak_ptr<Creature>> & p_selectedCreatures)
 {
 
 	// use lock to validate the weak ptrs.
@@ -113,7 +113,7 @@ void Controller::ControlCreatures(EntityContainer& entities_, std::list<std::wea
 	// create creatures
 	if (IsKeyReleased(KEY_SPACE))
 	{
-		entities_._entities.emplace_back(std::shared_ptr<Creature>(new Creature(GetMousePosition())));
+		entityContainer_._entities.emplace_back(std::shared_ptr<Creature>(new Creature(GetMousePosition())));
 	}
 
 	// delete creatures
@@ -121,12 +121,12 @@ void Controller::ControlCreatures(EntityContainer& entities_, std::list<std::wea
 	{
 		for (auto & selected : validatedSelectedCreatures)
 		{
-			std::vector<std::shared_ptr<Creature>>::iterator i = entities_._entities.begin();
-			while (i != entities_._entities.end())
+			std::vector<std::shared_ptr<Creature>>::iterator i = entityContainer_._entities.begin();
+			while (i != entityContainer_._entities.end())
 			{
 				if (selected == *i)
 				{
-					i = entities_._entities.erase(i);
+					i = entityContainer_._entities.erase(i);
 				}
 				else
 				{
@@ -167,7 +167,7 @@ void Controller::ControlCreatures(EntityContainer& entities_, std::list<std::wea
 	{
 		p_selectedCreatures.clear();
 		validatedSelectedCreatures.clear(); // not sure if i need to do both.
-		for (auto & creature : entities_._entities)
+		for (auto & creature : entityContainer_._entities)
 		{
 			if (IsMouseButtonReleased(0) && CheckCollisionCircleRec(creature->m_pos, creature->m_collisionRadius,selectionRect))
 			{
@@ -181,7 +181,7 @@ void Controller::ControlCreatures(EntityContainer& entities_, std::list<std::wea
 	if (IsMouseButtonReleased(1))
 	{
 		std::shared_ptr<Creature> targetedCreature = nullptr;
-		for (auto  & creature : entities_._entities)
+		for (auto  & creature : entityContainer_._entities)
 		{
 			if (CheckCollisionPointCircle({ (float)_mouseX, (float)_mouseY}, creature->m_pos, creature->m_collisionRadius))
 			{

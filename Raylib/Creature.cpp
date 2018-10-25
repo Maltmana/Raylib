@@ -19,10 +19,10 @@ Creature::~Creature()
 	std::cout << "creature destroyed. ID: " << _id << '\n';
 }
 
-void Creature::Update(EntityContainer & entities_)
+void Creature::Update(EntityContainer & entityContainer_)
 {
 	CalculateVectorToTarget();
-	start_move_process(entities_);
+	start_move_process(entityContainer_);
 	change_facing(m_vecToTargNorm); 
 	if (m_creatureTargetWayPoints.empty()) // TODO bug when something dies it does not get removed from creatureTargetwaypoints
 		run_waypoints();
@@ -46,14 +46,14 @@ void Creature::Update(EntityContainer & entities_)
 
 }
 
-void Creature::start_move_process(EntityContainer & entities_)
+void Creature::start_move_process(EntityContainer & entityContainer_)
 {
 	// Bug : without deadZone can't see sprites and they shake rapidly back and forth when at targPos.
 	float deadZone = 5.f; // TODO not need so much deadzone
 	if (!(MyHelperLib::approx(m_pos.x, m_targPos.x, deadZone) && MyHelperLib::approx(m_pos.y, m_targPos.y, deadZone)))
 	{
 		calculate_move();
-		if (is_colliding(entities_))
+		if (is_colliding(entityContainer_))
 		{
 		}
 		else
@@ -75,9 +75,9 @@ void Creature::calculate_move()
 	m_newPos = RayMath::Vector2Add(m_pos, scaled);
 }
 
-bool Creature::is_colliding(EntityContainer & entities_)
+bool Creature::is_colliding(EntityContainer & entityContainer_)
 {
-	for (auto const & entity : entities_._entities)
+	for (auto const & entity : entityContainer_._entities)
 	{
 		if (!(this == entity.get()))
 		{
