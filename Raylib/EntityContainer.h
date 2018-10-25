@@ -22,6 +22,7 @@ public:
 	// flags
 	// containers
 	std::vector<std::shared_ptr<Creature>> _entities;
+	std::vector<std::weak_ptr<Creature>> _entitiesWP; // TODO there has got to be a better way than making 2 containers for two types.. templates or something
 	// objects
 	std::vector<std::shared_ptr<Creature>>::iterator _entitiesIt;
 private:

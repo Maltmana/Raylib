@@ -11,6 +11,14 @@
 #include "EntityContainer.h"
 #include "Item.h"
 
+
+/*
+NOTES
+only pass in references to custom types.
+never pass in std::ANYTHING	 including unique pointers.
+it's too ugly and when you want to change the std type you have to change everything
+*/
+
 // containers of creatures interact and then containers of graphics used to draw them
 class Game
 {
@@ -38,7 +46,6 @@ private:
 	// flags
 	bool paused = false;
 	// containers
-	std::list<std::weak_ptr<Creature>> selectedCreatures;
 	std::list<std::shared_ptr<std::vector<Item>>> items;
 	std::list<Graphic> graphics;
 	// objects

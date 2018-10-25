@@ -1,6 +1,5 @@
 #include "Controller.h"
 #include "Creature.h"
-#include "EntityContainer.h"
 
 Controller::Controller()
 {
@@ -10,14 +9,14 @@ Controller::~Controller()
 {
 }
 
-void Controller::Update(bool & p_paused, EntityContainer& entityContainer_, std::list<std::weak_ptr<Creature>>& p_selectedCreatures)
+void Controller::Update(bool & p_paused, EntityContainer& entityContainer_)
 {
 
 	TogglePause(p_paused); // TODO implement pause feature
 	UpdateMousePos();
 	UpdateMouseDownPos();
 	UpdateSelectionBox();
-	ControlCreatures(entityContainer_, p_selectedCreatures);
+	ControlCreatures(entityContainer_);
 }
 
 void Controller::Draw()
@@ -96,12 +95,12 @@ void Controller::UpdateSelectionBox()
 	}
 }
 
-void Controller::ControlCreatures(EntityContainer& entityContainer_, std::list<std::weak_ptr<Creature>> & p_selectedCreatures)
+void Controller::ControlCreatures(EntityContainer& entityContainer_)
 {
 
 	// use lock to validate the weak ptrs.
 	std::list<std::shared_ptr<Creature>> validatedSelectedCreatures;
-	for(auto & selected : p_selectedCreatures)
+	for(auto & selected : _selectedEntities._entitiesWP)
 	{
 		if (!selected.expired())
 		{
@@ -165,14 +164,14 @@ void Controller::ControlCreatures(EntityContainer& entityContainer_, std::list<s
 		// select creatures
 	if (IsMouseButtonReleased(0))
 	{
-		p_selectedCreatures.clear();
+		_selectedEntities._entitiesWP.clear();
 		validatedSelectedCreatures.clear(); // not sure if i need to do both.
 		for (auto & creature : entityContainer_._entities)
 		{
 			if (IsMouseButtonReleased(0) && CheckCollisionCircleRec(creature->m_pos, creature->m_collisionRadius,selectionRect))
 			{
 				// dont add them until you release the box.
-				p_selectedCreatures.push_back(creature);
+				_selectedEntities._entitiesWP.push_back(creature);
 			}
 		}
 	}

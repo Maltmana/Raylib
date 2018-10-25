@@ -4,9 +4,9 @@
 // non-system
 #include "stdafx.h"
 // system
+#include "EntityContainer.h"
 
 class Creature;
-class EntityContainer;
 
 // user input 
 class Controller
@@ -16,7 +16,7 @@ public:
 	~Controller();
 public:
 	// runs selection system and command system
-	void Update(bool & p_paused, EntityContainer& entityContainer_, std::list<std::weak_ptr<Creature>>& p_selectedCreatures);
+	void Update(bool & p_paused, EntityContainer& entityContainer_);
 	// draws selection rectangle
 	void Draw();
 private:
@@ -24,7 +24,7 @@ private:
 	void UpdateMouseDownPos();
 	void TogglePause(bool & p_paused);
 	void UpdateSelectionBox();
-	void ControlCreatures(EntityContainer& entityContainer_, std::list<std::weak_ptr<Creature>>& p_selectedCreatures);
+	void ControlCreatures(EntityContainer& entityContainer_);
 public:
 	// primitives
 	// flags
@@ -33,6 +33,7 @@ public:
 private: // TODO make stuff private that needs to be
 	// primitives
 	int _mouseX, _mouseY, _mouseDownX, _mouseDownY;
+	EntityContainer _selectedEntities;
 	// flags
 	// objects
 };
