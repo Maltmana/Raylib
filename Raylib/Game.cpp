@@ -21,7 +21,7 @@ void Game::loop()
 
 void Game::Update()
 {
-	controller.Update(paused, _entityContainer._creatures, selectedCreatures);
+	controller.Update(paused, _entityContainer, selectedCreatures);
 	_entityContainer.UpdateCreatures();
 
 }

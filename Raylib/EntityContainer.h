@@ -21,9 +21,9 @@ public:
 	// primitives
 	// flags
 	// containers
-	std::list<std::shared_ptr<Creature>> _creatures;
+	std::vector<std::shared_ptr<Creature>> _entities;
 	// objects
-	std::list<std::shared_ptr<Creature>>::iterator _creatureIt;
+	std::vector<std::shared_ptr<Creature>>::iterator _entitiesIt;
 private:
 	// primitives
 	// flags

@@ -6,6 +6,10 @@
 #include "Enums.h"
 // system
 #include "Animation.h"
+
+// forwards
+class EntityContainer;
+
 // TODO pull out all functions and data into components so we don't have to do stupid inheritance
 class Creature
 {
@@ -14,12 +18,12 @@ public:
 	Creature(Vector2 const & p_pos);
 	~Creature();
 public:
-	void Update(std::list<std::shared_ptr<Creature>> const & p_creatures);
+	void Update(EntityContainer & creatures_);
 	// MOVEMENT AND COLLISION
-	void start_move_process(std::list<std::shared_ptr<Creature>> const & p_creatures);
+	void start_move_process(EntityContainer & creatures_);
 	void Move();
 	void calculate_move();
-	bool is_colliding(std::list<std::shared_ptr<Creature>> const & p_creatures);
+	bool is_colliding(EntityContainer & creatures_);
 	void run_waypoints();
 	void run_creature_waypoints();
 	void change_facing(Vector2 const & p_normalizedVector);

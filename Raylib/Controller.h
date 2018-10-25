@@ -6,6 +6,7 @@
 // system
 
 class Creature;
+class EntityContainer;
 
 // user input 
 class Controller
@@ -15,7 +16,7 @@ public:
 	~Controller();
 public:
 	// runs selection system and command system
-	void Update(bool & p_paused, std::list<std::shared_ptr<Creature>> & p_creatures, std::list<std::weak_ptr<Creature>> & p_selectedCreatures);
+	void Update(bool & p_paused, EntityContainer& entities_, std::list<std::weak_ptr<Creature>>& p_selectedCreatures);
 	// draws selection rectangle
 	void Draw();
 private:
@@ -23,7 +24,7 @@ private:
 	void UpdateMouseDownPos();
 	void TogglePause(bool & p_paused);
 	void UpdateSelectionBox();
-	void ControlCreatures(std::list<std::shared_ptr<Creature>> & p_creatures, std::list<std::weak_ptr<Creature>> & p_selectedCreatures);
+	void ControlCreatures(EntityContainer& entities_, std::list<std::weak_ptr<Creature>>& p_selectedCreatures);
 public:
 	// primitives
 	// flags
