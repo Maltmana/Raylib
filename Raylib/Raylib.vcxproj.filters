@@ -31,6 +31,9 @@
     <Filter Include="Header Files\User">
       <UniqueIdentifier>{23a4b4dc-3540-47ac-bbd4-ed0285e79e00}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\CustomContainers">
+      <UniqueIdentifier>{d0282fee-923c-4149-a197-e3f16d294b4f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -66,9 +69,6 @@
     <ClInclude Include="Controller.h">
       <Filter>Header Files\User</Filter>
     </ClInclude>
-    <ClInclude Include="CreatureContainer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Enums.h">
       <Filter>Header Files\Misc</Filter>
     </ClInclude>
@@ -80,6 +80,9 @@
     </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>Header Files\GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityContainer.h">
+      <Filter>Header Files\CustomContainers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -110,13 +113,13 @@
     <ClCompile Include="Wall.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CreatureContainer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="RNG.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Item.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityContainer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

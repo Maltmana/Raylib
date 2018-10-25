@@ -8,7 +8,7 @@
 #include "CreatureVisualizer.h"
 #include "Graphic.h"
 #include "Controller.h"
-#include "CreatureContainer.h"
+#include "EntityContainer.h"
 #include "Item.h"
 
 // containers of creatures interact and then containers of graphics used to draw them
@@ -43,7 +43,7 @@ private:
 	std::list<Graphic> graphics;
 	// objects
 	Controller controller;
-	CreatureContainer _creatureContainer;
+	EntityContainer _entityContainer;
 	CreatureVisualizer cv;
 
 

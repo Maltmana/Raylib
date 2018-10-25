@@ -21,8 +21,8 @@ void Game::loop()
 
 void Game::Update()
 {
-	controller.Update(paused, _creatureContainer._creatures, selectedCreatures);
- 	_creatureContainer.UpdateCreatures();
+	controller.Update(paused, _entityContainer._creatures, selectedCreatures);
+	_entityContainer.UpdateCreatures();
 
 }
 
@@ -37,7 +37,7 @@ void Game::Draw()
 	// draws UI stuff like selection rect
 	controller.Draw();
 	// draw creatures
-	_creatureContainer.DrawCreatures(cv, graphics);
+	_entityContainer.DrawCreatures(cv, graphics);
 
 	// delete
 	float rotation = 0.f;

@@ -7,11 +7,11 @@
 #include "Creature.h"
 #include "CreatureVisualizer.h"
 #include "Graphic.h"
-class CreatureContainer
+class EntityContainer
 {
 public:
-	CreatureContainer();
-	~CreatureContainer();
+	EntityContainer();
+	~EntityContainer();
 public:
 	void UpdateCreatures();
 	void delete_dead(std::shared_ptr<Creature> & creature_);

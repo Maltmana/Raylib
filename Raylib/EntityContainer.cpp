@@ -1,17 +1,17 @@
 #include "stdafx.h"
-#include "CreatureContainer.h"
+#include "EntityContainer.h"
 
 
-CreatureContainer::CreatureContainer()
+EntityContainer::EntityContainer()
 {
 }
 
 
-CreatureContainer::~CreatureContainer()
+EntityContainer::~EntityContainer()
 {
 }
 
-void CreatureContainer::UpdateCreatures()
+void EntityContainer::UpdateCreatures()
 {
 	for (auto & creature : _creatures)
 	{
@@ -36,7 +36,7 @@ void CreatureContainer::UpdateCreatures()
 
 }
 
-void CreatureContainer::delete_dead(std::shared_ptr<Creature> & creature_)
+void EntityContainer::delete_dead(std::shared_ptr<Creature> & creature_)
 {
 		if (creature_->_deleteMe)
 		{
@@ -49,7 +49,7 @@ void CreatureContainer::delete_dead(std::shared_ptr<Creature> & creature_)
 		}
 }
 
-void CreatureContainer::DrawCreatures(CreatureVisualizer const & cv_, std::list<Graphic> const & graphics_) const
+void EntityContainer::DrawCreatures(CreatureVisualizer const & cv_, std::list<Graphic> const & graphics_) const
 {
 	for (auto const & creature : _creatures)
 	{
