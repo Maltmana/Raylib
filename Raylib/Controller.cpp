@@ -192,4 +192,29 @@ void Controller::ControlCreatures(std::list<std::shared_ptr<Creature>> & p_creat
 			}
 		}
 	}
+
+	// print information of selected creatures
+	float i = 0;
+	std::string tempS;
+	for (auto & selected : validatedSelectedCreatures)
+	{ 
+		tempS = "ID: " + std::to_string(selected->_id);
+		float x = 10;
+		DrawTextEx(GetFontDefault(), tempS.c_str(), { x, i * 10 }, 10, 2, RED);
+		float spaces = tempS.size();
+		float fontWidth = 6.5;
+
+		x += spaces * fontWidth;
+		tempS = "POS: " + std::to_string(selected->m_pos.x) + " , " + std::to_string(selected->m_pos.y);
+		DrawTextEx(GetFontDefault(), tempS.c_str(), { x, i * 10 }, 10, 2, RED);
+		spaces = tempS.size();
+
+		tempS = "TARG: " + std::to_string(selected->m_targPos.x) + " , " + std::to_string(selected->m_targPos.y);
+		x += spaces * fontWidth;
+		DrawTextEx(GetFontDefault(), tempS.c_str(), { x, i * 10 }, 10, 2, RED);
+		spaces = tempS.size();
+		i++;
+	}
+
+
 }

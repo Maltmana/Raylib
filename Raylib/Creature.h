@@ -6,7 +6,7 @@
 #include "Enums.h"
 // system
 #include "Animation.h"
-
+// TODO pull out all functions and data into components so we don't have to do stupid inheritance
 class Creature
 {
 	static int id;

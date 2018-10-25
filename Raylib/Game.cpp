@@ -54,7 +54,6 @@ void Game::Draw()
 	DrawTexturePro(graphics.back().m_texture, sourceRec, destRec, origin, rotation, WHITE);
 	// delete
 
-	DrawTextEx(GetFontDefault(), "hey", { 20,20 }, 14, 3, RED);
 
 	// Ray
 	EndDrawing();
