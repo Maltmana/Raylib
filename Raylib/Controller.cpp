@@ -135,21 +135,30 @@ void Controller::ControlCreatures(std::list<std::shared_ptr<Creature>> & p_creat
 		}
 	}
 
-	// move creatures and clear their waypoints.  // TODO MAKE THEM MOVE RELATIVELY WHEN IN A GROUP SO CAN MAKE CUSTOM FORMATIONS
-	for (auto & selected : validatedSelectedCreatures)
+	// "group destination" and defining a group so they can have relative movement
+	if (!validatedSelectedCreatures.empty())
 	{
+		std::shared_ptr<Creature> & leader = validatedSelectedCreatures.back();
+		Vector2 groupPos = leader->m_pos;
+
+		// move creatures and clear their waypoints.  // TODO MAKE THEM MOVE RELATIVELY WHEN IN A GROUP SO CAN MAKE CUSTOM FORMATIONS
+		for (auto & selected : validatedSelectedCreatures)
+		{
+			auto groupRelativeTarget = RayMath::Vector2Add(GetMousePosition(), RayMath::Vector2Subtract(selected->m_pos,groupPos));
+
 			if (IsMouseButtonReleased(1) && IsKeyDown(KEY_LEFT_SHIFT))
 			{
-				selected->m_wayPoints.push_back(GetMousePosition());
+				selected->m_wayPoints.push_back(groupRelativeTarget);
 			}
 			else if (IsMouseButtonReleased(1))
 			{
-				selected->change_targ(GetMousePosition());
+				selected->change_targ(groupRelativeTarget);
 				selected->m_wayPoints.clear();
 				selected->m_creatureTargetWayPoints.clear(); // TODO throws read access violation when a selected dude is killed and then a move command is issued (screen click)  
 															// the selected creature was cleared but still calling this
 															// need to remove selected creature from all lists as soon as he dies...
 			}
+		}
 	}
 
 		// select creatures
