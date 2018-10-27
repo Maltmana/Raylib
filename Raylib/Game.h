@@ -5,7 +5,6 @@
 #include "stdafx.h"
 // system
 #include "Creature.h"
-#include "CreatureVisualizer.h"
 #include "Graphic.h"
 #include "Controller.h"
 #include "EntityContainer.h"

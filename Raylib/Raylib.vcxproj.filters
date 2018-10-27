@@ -60,9 +60,6 @@
     <ClInclude Include="Window.h">
       <Filter>Header Files\Misc</Filter>
     </ClInclude>
-    <ClInclude Include="CreatureVisualizer.h">
-      <Filter>Header Files\GameVisual</Filter>
-    </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Header Files\GameVisual</Filter>
     </ClInclude>
@@ -112,9 +109,6 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files\main</Filter>
-    </ClCompile>
-    <ClCompile Include="CreatureVisualizer.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Source Files</Filter>

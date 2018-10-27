@@ -1,5 +1,12 @@
 #pragma once
 
+enum class GraphicTypes
+{
+	EdgeLord,
+	NobleMale,
+	Satyr
+};
+
 enum class CreatureGraphicsTypes
 {
 	Monk,
