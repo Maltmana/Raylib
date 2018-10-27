@@ -4,8 +4,9 @@
 int Creature::id = 1;
 
 // class functions
-Creature::Creature(Vector2 const & p_pos)
+Creature::Creature(GraphicType graphicType_, Vector2 const & p_pos)
 	:
+	_graphicType{graphicType_},
 	m_pos{ p_pos },
 	_id{ id }
 {

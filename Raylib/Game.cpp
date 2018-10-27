@@ -61,8 +61,9 @@ void Game::Draw()
 // adds some initial textures to graphics
 void Game::LoadTextures()
 {
-	_graphicContainer.getGraphics().emplace_back(std::make_unique<Graphic>("assets/charsprites.png", characterSpritesCol, characterSpritesRow));
-	_graphicContainer.getGraphics().emplace_back(std::make_unique<Graphic>("assets/singleTile.png", 1, 1));
-	_graphicContainer.getGraphics().emplace_back(std::make_unique<Graphic>("assets/BootsOfSpeed.png", 1, 1));
+	_graphicContainer.getGraphics().emplace_back(std::make_unique<Graphic>(GraphicType::NobleMale, "assets/NobleMale.png", characterSpritesCol, characterSpritesRow));
+	_graphicContainer.getGraphics().emplace_back(std::make_unique<Graphic>(GraphicType::EdgeLord, "assets/EdgeLord.png", characterSpritesCol, characterSpritesRow));
+	_graphicContainer.getGraphics().emplace_back(std::make_unique<Graphic>(GraphicType::Satyr, "assets/Satyr.png", characterSpritesCol, characterSpritesRow));
+	_graphicContainer.getGraphics().emplace_back(std::make_unique<Graphic>(GraphicType::BootsOfSpeed, "assets/BootsOfSpeed.png", 1, 1));
 	items.emplace_back();
 }

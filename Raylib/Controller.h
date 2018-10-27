@@ -5,6 +5,7 @@
 #include "stdafx.h"
 // system
 #include "EntityContainer.h"
+#include "Enums.h"
 
 class Creature;
 

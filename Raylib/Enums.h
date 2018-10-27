@@ -1,10 +1,11 @@
 #pragma once
 
-enum class GraphicTypes
+enum class GraphicType
 {
 	EdgeLord,
 	NobleMale,
-	Satyr
+	Satyr,
+	BootsOfSpeed
 };
 
 enum class CreatureGraphicsTypes

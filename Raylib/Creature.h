@@ -15,7 +15,7 @@ class Creature
 {
 	static int id;
 public:
-	Creature(Vector2 const & p_pos);
+	Creature(GraphicType graphicType_, Vector2 const & p_pos);
 	~Creature();
 public:
 	void Update(EntityContainer & entityContainer_);
@@ -53,7 +53,7 @@ public:
 	Vector2 m_newPos = { 0.f,0.f };
 	// flags
 	int m_facing = (int)FacingDirections::South;
-	int type = (int)CreatureGraphicsTypes::Druid;
+	GraphicType _graphicType;
 	// containers
 	std::deque<Vector2> m_wayPoints;
 	std::string creatureName = "dude";

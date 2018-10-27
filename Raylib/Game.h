@@ -11,6 +11,7 @@
 #include "Item.h"
 #include "GraphicContainer.h"
 #include "DrawHandler.h"
+#include "Enums.h"
 
 
 /*
@@ -42,8 +43,8 @@ private:
 public:
 private:
 	// primitives
-	int characterSpritesCol = 18; // TODO MOVE TO FILE
-	int characterSpritesRow = 8; // TODO MOVE TO FILE
+	int characterSpritesCol = 3; // TODO MOVE TO FILE
+	int characterSpritesRow = 4; // TODO MOVE TO FILE
 	// flags
 	bool paused = false;
 	// containers

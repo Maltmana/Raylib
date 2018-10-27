@@ -1,5 +1,6 @@
 #include "Controller.h"
 #include "Creature.h"
+#include "RNG.h"
 
 Controller::Controller()
 {
@@ -112,7 +113,7 @@ void Controller::ControlCreatures(EntityContainer& entityContainer_)
 	// create creatures
 	if (IsKeyReleased(KEY_SPACE))
 	{
-		entityContainer_._entities.emplace_back(std::shared_ptr<Creature>(new Creature(GetMousePosition())));
+		entityContainer_._entities.emplace_back(std::shared_ptr<Creature>(new Creature((GraphicType)(int)RNG::get_randi(0,2), GetMousePosition())));
 	}
 
 	// delete creatures
