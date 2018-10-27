@@ -34,6 +34,9 @@
     <Filter Include="Header Files\CustomContainers">
       <UniqueIdentifier>{d0282fee-923c-4149-a197-e3f16d294b4f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Handlers">
+      <UniqueIdentifier>{5a241565-511c-4382-927e-7ccfa0954e3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -87,6 +90,12 @@
     <ClInclude Include="GraphicsContainer.h">
       <Filter>Header Files\CustomContainers</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -128,5 +137,13 @@
     <ClCompile Include="GraphicsContainer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DrawHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Raylib.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

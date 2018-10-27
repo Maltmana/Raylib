@@ -7,7 +7,7 @@
 #include "Creature.h"
 #include "CreatureVisualizer.h"
 #include "Graphic.h"
-#include "GraphicsContainer.h"
+#include "GraphicContainer.h"
 class EntityContainer
 {
 public:
@@ -16,7 +16,7 @@ public:
 public:
 	void UpdateCreatures();
 	void delete_dead(std::shared_ptr<Creature> & creature_);
-	void DrawCreatures(CreatureVisualizer const & cv_, GraphicsContainer & graphicContainer_) const;
+	void DrawCreatures(CreatureVisualizer const & cv_, GraphicContainer & graphicContainer_) const;
 private:
 public:
 	// primitives

@@ -1,12 +1,12 @@
 #include "stdafx.h"
-#include "GraphicsContainer.h"
+#include "GraphicContainer.h"
 
 
-GraphicsContainer::GraphicsContainer()
+GraphicContainer::GraphicContainer()
 {
 }
 
 
-GraphicsContainer::~GraphicsContainer()
+GraphicContainer::~GraphicContainer()
 {
 }

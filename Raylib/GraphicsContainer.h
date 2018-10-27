@@ -1,10 +1,10 @@
 #pragma once
 #include "Graphic.h"
-class GraphicsContainer
+class GraphicContainer
 {
 public:
-	GraphicsContainer();
-	~GraphicsContainer();
+	GraphicContainer();
+	~GraphicContainer();
 public:
 private:
 public:
