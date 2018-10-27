@@ -87,14 +87,14 @@
     <ClInclude Include="EntityContainer.h">
       <Filter>Header Files\CustomContainers</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicsContainer.h">
-      <Filter>Header Files\CustomContainers</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DrawHandler.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicContainer.h">
+      <Filter>Header Files\CustomContainers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -134,10 +134,10 @@
     <ClCompile Include="EntityContainer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicsContainer.cpp">
+    <ClCompile Include="DrawHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DrawHandler.cpp">
+    <ClCompile Include="GraphicContainer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
