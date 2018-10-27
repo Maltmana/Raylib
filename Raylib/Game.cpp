@@ -37,7 +37,7 @@ void Game::Draw()
 	// draws UI stuff like selection rect
 	controller.Draw();
 	// draw creatures
-	_entityContainer.DrawCreatures(cv, _graphicContainer);
+	_drawHandler.handle_drawing(_entityContainer, _graphicContainer);
 
 	// delete
 	float rotation = 0.f;

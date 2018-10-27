@@ -12,7 +12,7 @@ public:
 public:
 private:
 public:
-	void hande_drawing(EntityContainer entityContainer_, GraphicContainer graphicContainer_);
+	void handle_drawing(EntityContainer& entityContainer_, GraphicContainer& graphicContainer_);
 private:
 };
 

@@ -11,6 +11,7 @@
 #include "EntityContainer.h"
 #include "Item.h"
 #include "GraphicContainer.h"
+#include "DrawHandler.h"
 
 
 /*
@@ -52,7 +53,9 @@ private:
 	// objects
 	Controller controller;
 	EntityContainer _entityContainer;
-	CreatureVisualizer cv;
+
+	// handlers
+	DrawHandler _drawHandler;
 
 
 

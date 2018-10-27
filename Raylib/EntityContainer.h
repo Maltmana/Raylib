@@ -16,7 +16,6 @@ public:
 public:
 	void UpdateCreatures();
 	void delete_dead(std::shared_ptr<Creature> & creature_);
-	void DrawCreatures(CreatureVisualizer const & cv_, GraphicContainer & graphicContainer_) const;
 private:
 public:
 	// primitives
