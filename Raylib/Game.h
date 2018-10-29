@@ -16,10 +16,13 @@
 
 
 /*
-NOTES
-only pass in references to custom types.
-never pass in std::ANYTHING	 including unique pointers.
-it's too ugly and when you want to change the std type you have to change everything
+MAIN TODO
+gut out the creature class into components and an entity class.
+make handlers.
+plot out uml
+wrap up all your libraries and raylib.
+be able to pick up and drop items and get effects from them.
+learn an hour a day
 */
 
 // containers of creatures interact and then containers of graphics used to draw them
