@@ -12,6 +12,7 @@
 #include "GraphicContainer.h"
 #include "DrawHandler.h"
 #include "Enums.h"
+#include "EntityHandler.h"
 
 
 /*
@@ -56,6 +57,7 @@ private:
 
 	// handlers
 	DrawHandler _drawHandler;
+	EntityHandler _entityHandler;
 
 
 

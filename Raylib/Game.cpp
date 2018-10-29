@@ -22,7 +22,7 @@ void Game::loop()
 void Game::Update()
 {
 	controller.Update(paused, _entityContainer);
-	_entityContainer.UpdateCreatures();
+	_entityHandler.UpdateCreatures(_entityContainer);
 
 }
 

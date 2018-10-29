@@ -13,8 +13,7 @@ public:
 	EntityContainer();
 	~EntityContainer();
 public:
-	void UpdateCreatures();
-	void delete_dead(std::shared_ptr<Creature> & creature_);
+
 private:
 public:
 	// primitives
