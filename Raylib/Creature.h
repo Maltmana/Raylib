@@ -31,9 +31,9 @@ public:
 	// COMBAT
 	void process_attacking();
 		// returns true if creature is killed.
-	bool attack();
+	void attack();
 		// returns true if killed
-	bool take_damage(int const damage);
+	void take_damage(int const damage);
 	void handle_death();
 
 	// MISC

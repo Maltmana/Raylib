@@ -22,6 +22,7 @@ Creature::~Creature()
 
 void Creature::Update(EntityContainer & entityContainer_)
 {
+	// movement
 	CalculateVectorToTarget();
 	start_move_process(entityContainer_);
 	change_facing(m_vecToTargNorm); 
@@ -39,6 +40,7 @@ void Creature::Update(EntityContainer & entityContainer_)
 			process_attacking();
 		}
 	}
+	// death
 	handle_death();
 	if (_isDead)
 	{
@@ -154,34 +156,29 @@ void Creature::process_attacking()
 	_attackCooldownCounter += GetFrameTime();
 	if (_attackCooldownCounter * _attacksPerSec >= 1)
 	{
-		bool isTargKilled = attack(); // returns true if is killed
+		attack();
 		_attackCooldownCounter = 0;
-		if (isTargKilled) // TODO this doesn't work if I have like 5 dudes all attacking one dude. only works for guy who got killing blow.
-		{
-			m_creatureTargetWayPoints.pop_front();
-			puts("popped");
-		}
+
 	}
 
 }
 
-bool Creature::attack()
+void Creature::attack()
 {
 	std::cout << _id << " : is attacking\n";
 	if (!m_creatureTargetWayPoints.empty())
 	{
 		if (auto const & validCreature = m_creatureTargetWayPoints.front().lock())
 		{
-			return validCreature->take_damage(_attackDamage);
+			validCreature->take_damage(_attackDamage);
 		}
 	}
 }
 
-bool Creature::take_damage(int const damage)
+void Creature::take_damage(int const damage)
 {
 	_hp -= damage;
 	std::cout << _id << ' ' << _hp << " : hp";
-	return (_hp<=0);
 }
 
 void Creature::handle_death()
