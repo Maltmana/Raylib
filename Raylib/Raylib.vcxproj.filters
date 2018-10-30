@@ -37,6 +37,9 @@
     <Filter Include="Header Files\Handlers">
       <UniqueIdentifier>{5a241565-511c-4382-927e-7ccfa0954e3d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{0a8b0bcd-9205-4506-b866-a93fffc69771}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -96,6 +99,12 @@
     <ClInclude Include="EntityHandler.h">
       <Filter>Header Files\Handlers</Filter>
     </ClInclude>
+    <ClInclude Include="CombatComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="class template.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -138,6 +147,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EntityHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
