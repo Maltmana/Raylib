@@ -4,15 +4,26 @@
 // non-system
 #include "stdafx.h"
 // system
-#include "Entity.h"
+#include "Creature.h"
 #include "Graphic.h"
-// systems
-#include "GraphicsSystem.h"
-#include "PhysicsSystem.h"
-#include "AISystem.h"
-#include "CombatSystem.h"
-#include "AnimationSystem.h"
-#include "Entity.h"
+#include "Controller.h"
+#include "EntityContainer.h"
+#include "Item.h"
+#include "GraphicContainer.h"
+#include "DrawHandler.h"
+#include "Enums.h"
+#include "EntityHandler.h"
+
+
+/*
+MAIN TODO
+gut out the creature class into components and an entity class.
+make handlers.
+plot out uml
+wrap up all your libraries and raylib.
+be able to pick up and drop items and get effects from them.
+learn an hour a day
+*/
 
 // containers of creatures interact and then containers of graphics used to draw them
 class Game
@@ -31,32 +42,25 @@ private:
 	// run all game world logic
 	void Update();
 	// draw things from game world
-	void DrawProcess();
 	void Draw();
 	void LoadTextures();
-	void MakeTestEntities();
 public:
-	// static
-	static bool paused;
 private:
 	// primitives
-	int _characterSpriteSizeX = 16; // TODO MOVE TO FILE
-	int _characterSpriteSizeY = 18; // TODO MOVE TO FILE
-	int _itemSpriteSizeX = 16; // TODO MOVE TO FILE
-	int _itemSpriteSizeY = 16; // TODO MOVE TO FILE
+	int characterSpritesCol = 3; // TODO MOVE TO FILE
+	int characterSpritesRow = 4; // TODO MOVE TO FILE
 	// flags
+	bool paused = false;
+	// containers
+	std::list<std::shared_ptr<std::vector<Item>>> items;
+	GraphicContainer _graphicContainer;
+	// objects
+	Controller controller;
+	EntityContainer _entityContainer;
 
-	// graphics
-	std::vector<std::unique_ptr<Graphic>> _graphicsContainer;
-	// Entities
-	std::vector<std::shared_ptr<Entity>> _entityContainer;
-	// Components
-	// Systems
-	GraphicsSystem _graphicsSystem;
-	PhysicsSystem _physicsSystem;
-	AISystem _aiSystem;
-	CombatSystem _combatSystem;
-	AnimationSystem _animationSystem;
+	// handlers
+	DrawHandler _drawHandler;
+	EntityHandler _entityHandler;
 
 
 

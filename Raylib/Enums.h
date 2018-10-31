@@ -1,5 +1,23 @@
 #pragma once
 
+enum class GraphicType
+{
+	EdgeLord,
+	NobleMale,
+	Satyr,
+	BootsOfSpeed
+};
+
+enum class CreatureGraphicsTypes
+{
+	Monk,
+	Fabio,
+	DKnight,
+	Wizard,
+	Druid,
+	Priest
+};
+
 enum class ItemGraphicsTypes
 {
 	ThunderSword,
@@ -12,16 +30,4 @@ enum class FacingDirections
 	East,
 	South,
 	West
-};
-
-enum class GraphicsTypes
-{
-	FemaleSoldier,
-	MaleBarbarian,
-	MaleDarkKnight,
-	FemaleCaveman,
-	FemaleNoble,
-	MaleNoble,
-	ThunderSword,
-	BootsOfSpeed
 };

@@ -6,20 +6,24 @@
 #include "Enums.h"
 // system
 #include "Animation.h"
+
+// forwards
+class EntityContainer;
+
 // TODO pull out all functions and data into components so we don't have to do stupid inheritance
 class Creature
 {
 	static int id;
 public:
-	Creature(Vector2 const & p_pos);
+	Creature(GraphicType graphicType_, Vector2 const & p_pos);
 	~Creature();
 public:
-	void Update(std::list<std::shared_ptr<Creature>> const & p_creatures);
+	void Update(EntityContainer & entityContainer_);
 	// MOVEMENT AND COLLISION
-	void start_move_process(std::list<std::shared_ptr<Creature>> const & p_creatures);
+	void start_move_process(EntityContainer & entityContainer_);
 	void Move();
 	void calculate_move();
-	bool is_colliding(std::list<std::shared_ptr<Creature>> const & p_creatures);
+	bool is_colliding(EntityContainer & entityContainer_);
 	void run_waypoints();
 	void run_creature_waypoints();
 	void change_facing(Vector2 const & p_normalizedVector);
@@ -27,9 +31,9 @@ public:
 	// COMBAT
 	void process_attacking();
 		// returns true if creature is killed.
-	bool attack();
+	void attack();
 		// returns true if killed
-	bool take_damage(int const damage);
+	void take_damage(int const damage);
 	void handle_death();
 
 	// MISC
@@ -49,7 +53,7 @@ public:
 	Vector2 m_newPos = { 0.f,0.f };
 	// flags
 	int m_facing = (int)FacingDirections::South;
-	int type = (int)CreatureGraphicsTypes::Druid;
+	GraphicType _graphicType;
 	// containers
 	std::deque<Vector2> m_wayPoints;
 	std::string creatureName = "dude";
